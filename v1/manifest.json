@@ -1,0 +1,19 @@
+{
+  "version": "v1",
+  "repo": "qq1049323397/world-tamer-assets",
+  "builtAt": "2026-11-19T07:27:04.110Z",
+  "files": {
+    "p12-core-bundle.js": {
+      "bytes": 358736,
+      "sha256": "9673c455872d065ec83578d49a484bc0cab478a7e5ada2102d8f91e37843ece1"
+    },
+    "p12-battle-bundle.js": {
+      "bytes": 187164,
+      "sha256": "215e449ff408537be7679c2b40e46ec9f6ae13af0c2e77fe25df3a69b54fc59c"
+    },
+    "p12-wild-bundle.js": {
+      "bytes": 72700,
+      "sha256": "56bf8c15ee2b40463fb1b9a59e7aa2a8cfad8300d194d40347b42ee5a085071c"
+    }
+  }
+}
