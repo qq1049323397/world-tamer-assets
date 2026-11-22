@@ -1189,7 +1189,7 @@ window.P12_PROSE_V7_CSS="/* ====================================================
   var LS = 'p12hook:';
   var load = function (k, d) { try { var v = localStorage.getItem(LS + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } };
   var save = function (k, v) { try { localStorage.setItem(LS + k, JSON.stringify(v)); } catch (e) {} };
-  var DEF_SPRITE_URL = 'https://42ddc630.wanxiangdengta.pages.dev/file/1795333223617_p12-sprites.json';
+  var DEF_SPRITE_URL = 'https://42ddc630.wanxiangdengta.pages.dev/file/1795349420704_p12-sprites.json';
   var savedCfg = load('cfg', {});
   // 老存档一旦开关过手环抽屉就会把旧版默认 spriteUrl 存进 localStorage；升级卡版本时自动跟进新官方清单地址（用户主动清空或填外站地址则保留）。
   if (savedCfg && typeof savedCfg.spriteUrl === 'string' && /wanxiangdengta\.pages\.dev\/file\/\d+_p12-sprites\.json$/.test(savedCfg.spriteUrl) && savedCfg.spriteUrl !== DEF_SPRITE_URL) {
