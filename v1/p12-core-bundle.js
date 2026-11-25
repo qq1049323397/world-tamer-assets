@@ -1337,6 +1337,40 @@ window.P12_WRISTBAND_V3_CSS="/* === WT-v7 / OS v3.0 云端手环即时变量与�
     return !!(vs && typeof vs === 'object' && (vs.name || (Array.isArray(vs.team) && vs.team.length)));
   }
 
+  function normMoveStr(m) {
+    if (m == null) return '';
+    if (typeof m === 'string') {
+      var s = m.trim();
+      return (!s || s === '[object Object]') ? '' : s;
+    }
+    if (typeof m === 'object') {
+      var name = String(m['名'] != null ? m['名'] : (m.name != null ? m.name : '')).trim();
+      if (!name || name === '[object Object]') return '';
+      var type = String(m['属性'] != null ? m['属性'] : (m.type != null ? m.type : '')).replace(/属性$/, '').trim();
+      var tier = String(m['档'] != null ? m['档'] : (m.tier != null ? m.tier : '')).trim();
+      var meta = [type, tier].filter(Boolean).join('·');
+      return meta ? (name + '（' + meta + '）') : name;
+    }
+    return '';
+  }
+
+  function normFavorItem(x) {
+    if (!x) return null;
+    if (typeof x === 'object') {
+      var who = String(x.who != null ? x.who : (x.name != null ? x.name : '')).trim();
+      if (!who) return null;
+      return { who: who, text: String(x.text != null ? x.text : '').trim() };
+    }
+    if (typeof x === 'string') {
+      var s = x.trim();
+      if (!s) return null;
+      var m = s.match(/^(\S+)\s+([\s\S]+)$/);
+      if (m) return { who: m[1].trim(), text: m[2].trim() };
+      return { who: s, text: '' };
+    }
+    return null;
+  }
+
   function sanitizeBaseToSchema(baseState) {
     var out = {};
     if (!baseState || typeof baseState !== 'object') return out;
@@ -1346,7 +1380,7 @@ window.P12_WRISTBAND_V3_CSS="/* === WT-v7 / OS v3.0 云端手环即时变量与�
         out[k] = clone(baseState[k]);
       }
     }
-    // 清理团队内部非 schema 字段（如果手环临时加过），保证严格通过 RP-Hub 校验
+    // 清理团队内部非 schema 字段并规范化招式/仓库为字符串数组，保证严格通过 RP-Hub 校验
     if (Array.isArray(out.team)) {
       var teamAllowed = {
         nick: 1, species: 1, stage: 1, types: 1, where: 1, hp: 1, injury: 1,
@@ -1359,8 +1393,13 @@ window.P12_WRISTBAND_V3_CSS="/* === WT-v7 / OS v3.0 云端手环即时变量与�
         Object.keys(teamAllowed).forEach(function (tk) {
           if (Object.prototype.hasOwnProperty.call(b, tk) && b[tk] !== undefined) nb[tk] = b[tk];
         });
+        if (Array.isArray(nb.moves)) nb.moves = nb.moves.map(normMoveStr).filter(Boolean);
+        if (Array.isArray(nb.storage)) nb.storage = nb.storage.map(normMoveStr).filter(Boolean);
         return nb;
       });
+    }
+    if (Array.isArray(out.favor)) {
+      out.favor = out.favor.map(normFavorItem).filter(Boolean);
     }
     return out;
   }
@@ -3801,28 +3840,42 @@ window.P12_WRISTBAND_V3_CSS="/* === WT-v7 / OS v3.0 云端手环即时变量与�
     for (var i = 0; i < names.length; i++) if (names[i] && text.indexOf(names[i]) >= 0) return true;
     return false;
   };
-  var PLACE_GO_RE = /(?:去|到|来到|走进|踏入|前往|出发去|抵达|赶往|逛|进入)[^，。！？\n]{0,6}$/;
-  var TALK_ONLY_RE = /(?:听说|聊起|提起|想起|问起|打听|说起|记得|传说|新闻里|讨论)[^，。！？\n]{0,8}$/;
-  var MEET_ACT_RE = /(?:找|见|叫|问|拉住|递给|走向|跟|和|对|约|拜访|请教)/;
+  var PLACE_GO_RE = /(?:去|到|来到|走进|踏入|前往|出发去|抵达|赶往|逛|进入|(?:^|[^以向过常])(?:往|朝))[^，。！？\n]{0,6}$/;
+  var GOSSIP_CUE_RE = /(?:听说|聊起|提起|想起|问起|打听|说起|记得|传说|传闻|新闻里?|网上|热搜|帖子|报道|讨论|闲聊|八卦|提到)/;
+  var DIRECT_MEET_RE = /(?:去找|去见|去拜访|去看看|去看|来找|来见|找她|找他|找它|见她|见他|约了|约好|约在|见面|碰面|拜访|请教|递给|拉住|走向|走到|迎面|遇到|碰见|撞见|敲门|点点头|点头|看着|望向|转身|开口|叫住|在不在|在吗|在哪|都来了|来了)/;
+  var sentenceAt = function (text, pos, len) {
+    var start = 0, end = text.length;
+    for (var s = pos - 1; s >= 0; s--) {
+      if (/[。！？!?\n]/.test(text.charAt(s))) { start = s + 1; break; }
+    }
+    for (var e = pos + len; e < text.length; e++) {
+      if (/[。！？!?\n]/.test(text.charAt(e))) { end = e; break; }
+    }
+    return text.slice(start, end);
+  };
   var allowFirstMeet = function (kind, userText, scene, names) {
+    var txt = String(userText || '');
     if (kind === 'place') {
       if (scene && textHas(scene.raw || '', names)) return true;
       for (var pi = 0; pi < names.length; pi++) {
-        var pn = names[pi], pos = pn ? String(userText || '').indexOf(pn) : -1;
-        if (pos >= 0 && PLACE_GO_RE.test(String(userText || '').slice(Math.max(0, pos - 12), pos))) return true;
+        var pn = names[pi], pos = pn ? txt.indexOf(pn) : -1;
+        if (pos >= 0 && PLACE_GO_RE.test(txt.slice(Math.max(0, pos - 12), pos))) return true;
       }
       return false;
     }
-    var hitAny = false;
     for (var i = 0; i < names.length; i++) {
-      var nm = names[i], idx = nm ? String(userText || '').indexOf(nm) : -1;
-      if (idx < 0) continue;
-      hitAny = true;
-      var before = String(userText || '').slice(Math.max(0, idx - 14), idx);
-      if (TALK_ONLY_RE.test(before) && !MEET_ACT_RE.test(String(userText || ''))) return false;
-      return true;
+      var nm = names[i];
+      if (!nm) continue;
+      var from = 0, idx;
+      while ((idx = txt.indexOf(nm, from)) >= 0) {
+        var near = txt.slice(Math.max(0, idx - 24), idx + nm.length + 16);
+        if (DIRECT_MEET_RE.test(near)) return true;
+        var sent = sentenceAt(txt, idx, nm.length);
+        if (!GOSSIP_CUE_RE.test(sent)) return true;
+        from = idx + nm.length;
+      }
     }
-    return hitAny;
+    return false;
   };
   var doMeet = function (body, rec) {
     var msgs = body.messages || [], i, userText = '', scene = parseScene(msgs);
