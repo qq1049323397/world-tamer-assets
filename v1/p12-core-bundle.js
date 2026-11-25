@@ -16,6 +16,8 @@ window.P12_SPRITE_DIRS={"360":"N","DeepSeek":"N","Kimi":"N","千问":"N","豆包
 ;
 window.P12_PROSE_V7_CSS="/* ==========================================================================\n   WT-v7 · 明亮少年漫机能风 · 平时流式正文套件与全玩法媒介卡片样式表\n   设计铁律：\n   1) 向《晓之夜歌》看齐：流式自适应容器 width:100%，随页面平滑伸缩，零死宽死高！\n   2) 废除整页城市照片糊字背景！城市与地形实景收纳进顶栏右侧 15° 斜切天际线微视窗。\n   3) 统一全卡陶瓷亮白 (#FFFFFF) × 深海藏青 (#1B2340) × 朝阳橙 (#FF6B2B) × 晴空青 (#00C2FF)。\n   ========================================================================== */\n:root {\n  --wt-navy: #1b2340;\n  --wt-navy-2: #263259;\n  --wt-paper: #fcfdff;\n  --wt-ceramic: #ffffff;\n  --wt-ceramic-2: #f2f7fe;\n  --wt-ice: #cfe0f5;\n  --wt-sun: #ff6b2b;\n  --wt-sky: #1da1f2;\n  --wt-cyan: #00c2ff;\n  --wt-mint: #10b981;\n  --wt-gold: #ffb800;\n  --wt-hot: #ff2e55;\n  --wt-ink: #1b2340;\n  --wt-muted: #52607a;\n  --wt-sans: \"HarmonyOS Sans SC\", \"Source Han Sans SC\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif;\n  --wt-mono: \"Bahnschrift\", \"DIN Alternate\", \"JetBrains Mono\", Consolas, monospace;\n}\n\n/* 宿主气泡流式解放：随聊天窗自然变大变小，绝不硬锁 1280px 套 900px */\n.centered-message-shell:has(.p12-page-seed),\n.centered-message-shell:has(.wt-story),\n.centered-message-shell:has(.wt-reg) {\n  width: min(96%, 980px) !important;\n  max-width: min(96%, 980px) !important;\n  margin-left: auto !important;\n  margin-right: auto !important;\n  padding-left: 0 !important;\n  padding-right: 0 !important;\n  background: transparent !important;\n  box-shadow: none !important;\n  border: 0 !important;\n}\n.centered-message-shell:has(.p12-page-seed) .message-content-wrapper,\n.centered-message-shell:has(.wt-story) .message-content-wrapper {\n  background: transparent !important;\n  padding: 0 !important;\n  margin: 0 0 18px !important;\n  border: 0 !important;\n  box-shadow: none !important;\n  max-width: none !important;\n  width: 100% !important;\n}\n.markdown-body:has(.p12-page-seed),\n.markdown-body:has(.wt-story) {\n  background: transparent !important;\n  padding: 0 !important;\n  margin: 0 !important;\n}\n.markdown-body .p12-page-seed,\n.markdown-body [data-p12-merged-empty=\"1\"] {\n  display: none !important;\n  margin: 0 !important;\n  padding: 0 !important;\n  border: 0 !important;\n  height: 0 !important;\n}\n.markdown-body div:has(> iframe[style*=\"display: none\"]),\n.markdown-body div:has(> iframe[style*=\"display:none\"]) {\n  margin: 0 !important;\n  padding: 0 !important;\n  border: 0 !important;\n  min-height: 0 !important;\n  height: 0 !important;\n  overflow: hidden !important;\n}\n\n/* ==================== 1. 玩家开场登记折叠卡：ITA 见习执照数字通行证 ==================== */\n.markdown-body details.wt-reg {\n  width: min(640px, 100%);\n  margin: 8px 0 12px auto;\n  background: linear-gradient(125deg, #ffffff 0%, #eaf4ff 64%, #fff3e6 100%);\n  border: 2.5px solid var(--wt-navy);\n  border-left: 7px solid var(--wt-sun);\n  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);\n  box-shadow: 6px 6px 0 rgba(27, 35, 64, 0.14);\n  font-family: var(--wt-sans);\n  overflow: hidden;\n}\n.markdown-body details.wt-reg > summary {\n  list-style: none;\n  cursor: pointer;\n  padding: 11px 16px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  color: var(--wt-navy);\n}\n.markdown-body details.wt-reg > summary::-webkit-details-marker { display: none; }\n.markdown-body .v7-id-chip {\n  width: 42px;\n  height: 42px;\n  background: var(--wt-navy);\n  color: var(--wt-gold);\n  clip-path: polygon(7px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%, 0 7px);\n  display: grid;\n  place-items: center;\n  font: 900 11px/1.05 var(--wt-mono);\n  text-align: center;\n  flex: none;\n}\n.markdown-body .v7-id-body { flex: 1; min-width: 0; }\n.markdown-body .v7-id-kicker {\n  display: block;\n  font: 900 9.5px/1 var(--wt-mono);\n  letter-spacing: 0.16em;\n  color: var(--wt-sky);\n}\n.markdown-body .v7-id-row {\n  margin-top: 4px;\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 7px;\n}\n.markdown-body .v7-id-row strong {\n  font-size: 16px;\n  font-weight: 900;\n  color: var(--wt-navy);\n}\n.markdown-body .v7-id-tag {\n  background: var(--wt-navy);\n  color: #fff;\n  font-size: 11px;\n  font-weight: 800;\n  padding: 2px 8px;\n  transform: skewX(-10deg);\n}\n.markdown-body .v7-id-tag.sun { background: var(--wt-sun); }\n.markdown-body .v7-id-more {\n  font: 800 11px/1 var(--wt-sans);\n  color: var(--wt-muted);\n  white-space: nowrap;\n}\n.markdown-body details.wt-reg > pre {\n  margin: 0 !important;\n  padding: 12px 16px !important;\n  border-top: 1.5px dashed var(--wt-ice);\n  background: rgba(255, 255, 255, 0.85) !important;\n  color: var(--wt-ink) !important;\n  font: 12px/1.65 var(--wt-mono) !important;\n  white-space: pre-wrap !important;\n}\n\n/* ==================== 2. 流式正文阅读纸页 (.wt-story) ==================== */\n.markdown-body .wt-story {\n  container-type: inline-size;\n  width: 100%;\n  background: var(--wt-paper) !important;\n  background-image: none !important;\n  color: var(--wt-ink);\n  font: 16px/1.95 var(--wt-sans);\n  border: 2.5px solid var(--wt-navy);\n  clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));\n  box-shadow: 0 16px 40px rgba(27, 35, 64, 0.11);\n  padding: 0 0 clamp(16px, 2.5vw, 26px);\n  overflow: hidden;\n  overflow-wrap: anywhere;\n}\n.markdown-body .wt-story::before {\n  content: \"\";\n  display: block;\n  height: 5px;\n  background: linear-gradient(90deg, var(--wt-navy) 0 35%, var(--wt-sky) 35% 70%, var(--wt-sun) 70% 100%);\n}\n.markdown-body .wt-story * {\n  box-sizing: border-box;\n}\n/* 约束外部预设可能注入的裸 HTML 面板不爆框 */\n.markdown-body .wt-story > div:not(.wt-scene):not(.wt-place-card):not(.wt-next):not(.p12-blk) {\n  max-width: calc(100% - clamp(28px, 6vw, 64px));\n  margin-left: auto;\n  margin-right: auto;\n}\n.markdown-body .wt-story > p,\n.markdown-body .wt-story > ul,\n.markdown-body .wt-story > ol,\n.markdown-body .wt-story > blockquote,\n.markdown-body .wt-story > hr.wt-break {\n  margin-left: clamp(16px, 4vw, 38px) !important;\n  margin-right: clamp(16px, 4vw, 38px) !important;\n}\n.markdown-body .wt-story > p {\n  margin-top: 0 !important;\n  margin-bottom: 1.05em !important;\n  text-indent: 0;\n  color: #1e293b;\n}\n.markdown-body .wt-story > p:first-of-type {\n  margin-top: 18px !important;\n}\n\n/* 对白与心理描写 */\n.markdown-body .wt-quote {\n  color: #0f3d6e !important;\n  background: linear-gradient(transparent 64%, rgba(0, 194, 255, 0.2) 64%) !important;\n  font-weight: 700 !important;\n  padding: 0 1px !important;\n}\n.markdown-body .wt-thought {\n  display: block;\n  margin: 10px 0;\n  padding: 8px 14px;\n  background: var(--wt-ceramic-2);\n  border-left: 4px solid var(--wt-sky);\n  clip-path: polygon(0 0, 100% 0, calc(100% - 9px) 100%, 0 100%);\n  color: var(--wt-muted);\n  font-style: normal;\n  font-size: 14.5px;\n  line-height: 1.75;\n}\n.markdown-body hr.wt-break {\n  border: 0 !important;\n  height: 2px !important;\n  background: linear-gradient(90deg, transparent, var(--wt-ice) 20%, var(--wt-sun) 50%, var(--wt-ice) 80%, transparent) !important;\n  margin-top: 20px !important;\n  margin-bottom: 20px !important;\n}\n\n/* ==================== 3. 番剧切角场景顶栏 + 右侧 15° 斜切城市实景微视窗 ==================== */\n.markdown-body .wt-scene.v7-scene-bar {\n  scroll-margin-top: 56px;\n  position: relative;\n  background: #ffffff !important;\n  border-bottom: 2px solid var(--wt-ice) !important;\n  min-height: 98px;\n  display: grid !important;\n  grid-template-columns: minmax(0, 1fr) clamp(180px, 31cqw, 290px);\n  margin: 0 0 16px 0 !important;\n  padding: 0 !important;\n  color: var(--wt-navy) !important;\n  overflow: hidden;\n}\n.markdown-body .v7-sb-left {\n  padding: clamp(12px, 2vw, 16px) clamp(16px, 3.5vw, 32px);\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  gap: 7px;\n  min-width: 0;\n}\n.markdown-body .v7-sb-meta {\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 7px;\n}\n.markdown-body .v7-ep-tag {\n  background: var(--wt-sun);\n  color: #fff !important;\n  font: 900 11px/1.1 var(--wt-sans);\n  padding: 3px 9px;\n  transform: skewX(-12deg);\n  letter-spacing: 0.06em;\n}\n.markdown-body .v7-time-tag {\n  background: var(--wt-navy) !important;\n  color: #fff !important;\n  font: 800 11.5px/1.1 var(--wt-mono);\n  padding: 3px 9px !important;\n}\n.markdown-body .v7-weather-tag {\n  background: var(--wt-ceramic-2);\n  border: 1.5px solid var(--wt-ice);\n  color: var(--wt-muted) !important;\n  font: 800 11.5px/1.1 var(--wt-sans) !important;\n  padding: 2px 9px;\n}\n.markdown-body .v7-sb-title-row {\n  display: flex;\n  align-items: baseline;\n  flex-wrap: wrap;\n  gap: 6px 12px;\n}\n.markdown-body .v7-sb-place {\n  margin: 0 !important;\n  font: 900 clamp(20px, 2.8cqw, 25px)/1.2 var(--wt-sans) !important;\n  color: var(--wt-navy) !important;\n  transform: none !important;\n}\n.markdown-body .v7-sb-place::after { display: none !important; }\n.markdown-body .v7-sb-crumb {\n  font: 800 12px/1.3 var(--wt-sans);\n  color: var(--wt-sky) !important;\n}\n.markdown-body .v7-sb-present {\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 6px;\n}\n.markdown-body .v7-sb-present:empty { display: none; }\n.markdown-body .v7-who-pill {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  background: var(--wt-ceramic-2);\n  border: 1.5px solid var(--wt-navy);\n  padding: 2px 9px 2px 3px;\n  border-radius: 999px;\n  font: 800 11.5px/1.2 var(--wt-sans);\n  color: var(--wt-navy);\n}\n.markdown-body .v7-who-pill .who-av {\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  background-color: #dbeafe;\n  background-size: cover;\n  background-position: center;\n  border: 1px solid var(--wt-navy);\n  display: inline-grid;\n  place-items: center;\n  font-size: 10px;\n  font-weight: 900;\n  color: var(--wt-navy);\n  flex: none;\n}\n.markdown-body .v7-sb-citywin {\n  position: relative;\n  clip-path: polygon(26px 0, 100% 0, 100% 100%, 0 100%);\n  border-left: 4px solid var(--wt-sun);\n  background:\n    radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.7), transparent 55%),\n    linear-gradient(135deg, #bfe4ff 0%, #7dd3fc 52%, #38bdf8 100%);\n  background-size: cover;\n  background-position: center;\n  overflow: hidden;\n}\n.markdown-body .v7-sb-citywin span {\n  position: absolute;\n  right: 8px;\n  bottom: 7px;\n  background: rgba(27, 35, 64, 0.84);\n  color: #fff;\n  font: 900 9.5px/1 var(--wt-mono);\n  padding: 3px 7px;\n  letter-spacing: 0.08em;\n}\n\n/* ==================== 4. 通用面板基座 (.wt-panel) ==================== */\n.markdown-body .wt-story > .wt-panel,\n.markdown-body .wt-story > .wt-dex,\n.markdown-body .wt-story > .p12-blk {\n  margin: 16px clamp(14px, 4vw, 38px) !important;\n  max-width: none !important;\n}\n.markdown-body .wt-panel {\n  background: #ffffff !important;\n  border: 2.5px solid var(--wt-navy) !important;\n  border-radius: 0 !important;\n  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);\n  box-shadow: 5px 5px 0 rgba(27, 35, 64, 0.13) !important;\n  padding: 0 !important;\n  overflow: hidden;\n}\n.markdown-body .wt-panel > header,\n.markdown-body .wt-panel > summary {\n  list-style: none;\n  background: var(--wt-navy);\n  color: #fff !important;\n  padding: 9px 15px;\n  font: 900 13px/1.2 var(--wt-sans);\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  cursor: pointer;\n}\n.markdown-body .wt-panel > summary::-webkit-details-marker { display: none; }\n.markdown-body .wt-panel .wt-raw {\n  padding: 13px 16px;\n  margin: 0 !important;\n  white-space: pre-wrap;\n  font-size: 13.8px;\n  line-height: 1.78;\n  color: var(--wt-ink);\n}\n\n/* ==================== 5. <快讯> 零生图「记者目击抓拍合成照」现代杂志画报 ==================== */\n.markdown-body .wt-news {\n  border-left: 6px solid var(--wt-sun) !important;\n}\n.markdown-body .wt-news > summary {\n  background: var(--wt-navy);\n  border-bottom: 2px solid var(--wt-sun);\n}\n.markdown-body .v7-mag-brand {\n  font: 900 13px/1 var(--wt-mono);\n  letter-spacing: 0.12em;\n  color: #fff;\n}\n.markdown-body .wt-news .wt-news-tag {\n  background: var(--wt-sun);\n  color: #fff;\n  padding: 2px 8px;\n  font: 900 10.5px/1.1 var(--wt-sans);\n  transform: skewX(-10deg);\n  white-space: nowrap;\n  flex: none;\n}\n.markdown-body .v7-mag-fold {\n  margin-left: auto;\n  font: 700 11px/1 var(--wt-sans);\n  color: #cbd5e1;\n  white-space: nowrap;\n  flex: none;\n}\n.markdown-body .v7-news-body {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr);\n}\n.markdown-body .v7-news-body.has-shot {\n  grid-template-columns: clamp(190px, 34cqw, 265px) minmax(0, 1fr);\n}\n.markdown-body .v7-news-shot {\n  position: relative;\n  min-height: 176px;\n  background-color: #141a33;\n  background-size: cover;\n  background-position: center;\n  border-right: 2px solid var(--wt-navy);\n  overflow: hidden;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.markdown-body .v7-news-shot[hidden] { display: none !important; }\n.markdown-body .v7-news-shot::before {\n  content: \"\";\n  position: absolute;\n  inset: 10px;\n  border: 1.5px dashed rgba(255, 255, 255, 0.65);\n  pointer-events: none;\n  z-index: 3;\n}\n.markdown-body .v7-news-shot .rec-badge {\n  position: absolute;\n  left: 14px;\n  top: 13px;\n  z-index: 4;\n  background: rgba(255, 46, 85, 0.92);\n  color: #fff;\n  padding: 2px 7px;\n  font: 900 9.5px/1.1 var(--wt-mono);\n  letter-spacing: 0.08em;\n}\n.markdown-body .v7-news-shot img.snap-beast {\n  position: relative;\n  z-index: 2;\n  width: 124px;\n  height: 124px;\n  object-fit: contain;\n  filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.52)) contrast(1.04);\n  transform: rotate(-2deg);\n}\n.markdown-body .v7-news-shot .snap-cap {\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  z-index: 4;\n  background: linear-gradient(180deg, transparent, rgba(20, 26, 51, 0.92));\n  color: #f8fafc;\n  padding: 16px 12px 7px;\n  font: 800 10.5px/1.25 var(--wt-sans);\n}\n.markdown-body .v7-news-list {\n  columns: 1 !important;\n  padding: 13px 16px !important;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.markdown-body .wt-news-date {\n  font: 900 11px/1 var(--wt-mono);\n  color: var(--wt-muted);\n  letter-spacing: 0.1em;\n  border-bottom: 1px dashed var(--wt-ice);\n  padding-bottom: 5px;\n}\n.markdown-body .wt-news-item {\n  padding: 8px 11px;\n  background: var(--wt-ceramic-2);\n  border-left: 4px solid var(--wt-sky);\n}\n.markdown-body .wt-news-item:nth-of-type(2n) { border-left-color: var(--wt-sun); }\n.markdown-body .wt-news-category {\n  display: inline-block;\n  font: 900 10.5px/1 var(--wt-sans);\n  color: #fff;\n  background: var(--wt-navy);\n  padding: 2px 7px;\n  margin-right: 7px;\n  transform: skewX(-10deg);\n}\n.markdown-body .wt-news-item p {\n  display: inline;\n  margin: 0 !important;\n  font-size: 13.5px;\n  font-weight: 700;\n  line-height: 1.65;\n  color: var(--wt-ink);\n}\n\n/* ==================== 6. <图鉴> 流式双栏装甲芯片卡（0 固定高度，0 死边距！） ==================== */\n.markdown-body .wt-dex {\n  position: relative !important;\n  height: auto !important;\n  min-height: 156px;\n  background: #ffffff !important;\n  border: 2.5px solid var(--wt-navy) !important;\n  border-radius: 0 !important;\n  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));\n  box-shadow: 6px 6px 0 rgba(27, 35, 64, 0.15) !important;\n  display: grid !important;\n  grid-template-columns: 164px minmax(0, 1fr);\n  overflow: hidden;\n}\n.markdown-body .v7-dex-stage {\n  position: relative;\n  background:\n    linear-gradient(rgba(29, 161, 242, 0.09) 1px, transparent 1px),\n    linear-gradient(90deg, rgba(29, 161, 242, 0.09) 1px, transparent 1px),\n    radial-gradient(circle at 50% 58%, #d8f1ff 0%, #f4f9ff 72%);\n  background-size: 16px 16px, 16px 16px, 100% 100%;\n  border-right: 2px solid var(--wt-ice);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 14px;\n  min-height: 152px;\n}\n.markdown-body .v7-dex-disc {\n  position: absolute;\n  bottom: 14px;\n  width: 118px;\n  height: 28px;\n  border-radius: 50%;\n  background: radial-gradient(ellipse at center, #ffffff 0%, #00c2ff 68%, transparent 75%);\n  pointer-events: none;\n}\n.markdown-body .wt-dex .wt-dex-art {\n  position: relative !important;\n  left: auto !important;\n  top: auto !important;\n  z-index: 2;\n  width: 118px !important;\n  height: 118px !important;\n  border-radius: 0 !important;\n  background-color: transparent !important;\n  background-size: contain !important;\n  background-repeat: no-repeat !important;\n  background-position: center bottom !important;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  filter: drop-shadow(0 8px 10px rgba(27, 35, 64, 0.26));\n}\n.markdown-body .wt-dex .wt-dex-info {\n  position: relative !important;\n  right: auto !important;\n  top: auto !important;\n  transform: none !important;\n  width: auto !important;\n  padding: 13px 16px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  gap: 6px;\n  min-width: 0;\n}\n.markdown-body .wt-dex .wt-dex-newb {\n  position: static !important;\n  align-self: flex-start;\n  background: var(--wt-sun);\n  color: #fff !important;\n  font: 900 10px/1 var(--wt-mono) !important;\n  padding: 3px 8px;\n  transform: skewX(-12deg);\n  letter-spacing: 0.08em;\n}\n.markdown-body .v7-dex-headrow {\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 8px;\n}\n.markdown-body .wt-dex .wt-dex-nm {\n  font: 900 20px/1.2 var(--wt-sans) !important;\n  color: var(--wt-navy);\n}\n.markdown-body .wt-dex .wt-types {\n  display: inline-flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 4px;\n}\n.markdown-body .wt-dex .wt-types img {\n  width: 20px;\n  height: 20px;\n  object-fit: contain;\n}\n.markdown-body .wt-dex .wt-dex-st {\n  margin: 0 !important;\n  font: 700 13px/1.6 var(--wt-sans) !important;\n  color: var(--wt-muted);\n}\n.markdown-body .v7-dex-foot {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 8px;\n  padding-top: 6px;\n  border-top: 1.5px dashed var(--wt-ice);\n  font: 800 11.5px/1.2 var(--wt-sans);\n  color: var(--wt-sky);\n}\n.markdown-body .wt-dex .wt-dex-more {\n  margin: 0 !important;\n  font: 900 11.5px/1 var(--wt-sans) !important;\n  color: var(--wt-sun);\n  cursor: pointer;\n}\n/* JS 尚未填充时先展示原文兜底，填充后隐藏 .wt-raw */\n.markdown-body .wt-dex[data-p12-filled=\"1\"] .wt-raw { display: none !important; }\n.markdown-body .wt-dex:not([data-p12-filled=\"1\"]) .wt-raw {\n  grid-column: 1 / -1;\n  padding: 10px 14px;\n  border-top: 1px dashed var(--wt-ice);\n  font-size: 13px;\n}\n\n/* ==================== 7. 都市小玩法 6 大媒介卡片 ==================== */\n/* 委托板 / 接取 / 完成 */\n.markdown-body .v7-bounty-board > header {\n  background: var(--wt-navy);\n  border-bottom: 2px solid var(--wt-gold);\n}\n.markdown-body .v7-bounty-board > header::before {\n  content: \"BOUNTY //\";\n  background: var(--wt-sun);\n  color: #fff;\n  font: 900 10.5px/1 var(--wt-mono);\n  padding: 3px 7px;\n  transform: skewX(-10deg);\n}\n.markdown-body .v7-bb-ticket {\n  margin: 8px 0;\n  padding: 9px 12px;\n  background: #f8fbff;\n  border: 1.5px solid var(--wt-ice);\n  border-left: 4px solid var(--wt-sun);\n}\n/* 竞拍灯牌 */\n.markdown-body .v7-auction-card > header {\n  background: linear-gradient(90deg, #1b2340, #7c2d12);\n  border-bottom: 2px solid var(--wt-gold);\n}\n.markdown-body .v7-auction-card > header::before {\n  content: \"AUCTION //\";\n  background: var(--wt-gold);\n  color: var(--wt-navy);\n  font: 900 10.5px/1 var(--wt-mono);\n  padding: 3px 7px;\n  transform: skewX(-10deg);\n}\n/* 暗巷黑市终端 */\n.markdown-body .v7-blackmarket-card {\n  background: #13192e !important;\n  border-color: #7c3aed !important;\n  border-left: 6px solid #a855f7 !important;\n}\n.markdown-body .v7-blackmarket-card > header {\n  background: #0d1222;\n  color: #e9d5ff !important;\n  border-bottom: 1.5px solid rgba(168, 85, 247, 0.45);\n}\n.markdown-body .v7-blackmarket-card > header::before {\n  content: \"DARKNET //\";\n  background: #9333ea;\n  color: #fff;\n  font: 900 10.5px/1 var(--wt-mono);\n  padding: 3px 7px;\n  transform: skewX(-10deg);\n}\n.markdown-body .v7-blackmarket-card .wt-raw {\n  color: #e2e8f0 !important;\n}\n.markdown-body .v7-blackmarket-card .wt-quote {\n  color: #f0abfc !important;\n  background: rgba(168, 85, 247, 0.22) !important;\n}\n/* 潮玩盲盒舱 */\n.markdown-body .v7-blindbox-card {\n  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 55%, #fff7ed 100%) !important;\n  border-left: 6px solid var(--wt-gold) !important;\n}\n.markdown-body .v7-blindbox-card > header::before {\n  content: \"CAPSULE //\";\n  background: var(--wt-sky);\n  color: #fff;\n  font: 900 10.5px/1 var(--wt-mono);\n  padding: 3px 7px;\n  transform: skewX(-10deg);\n}\n.markdown-body .v7-ssr-orb {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  margin: 0 0 8px;\n  padding: 4px 12px;\n  background: var(--wt-navy);\n  color: var(--wt-gold);\n  font: 900 11.5px/1.1 var(--wt-mono);\n  transform: skewX(-10deg);\n}\n/* <手机> 频道卡片 */\n.markdown-body .wt-phone > header {\n  background: linear-gradient(90deg, var(--wt-navy), #1e3a8a);\n}\n.markdown-body .wt-phone-tabs {\n  padding: 12px 14px;\n  display: flex;\n  flex-wrap: wrap;\n  gap: 7px;\n}\n.markdown-body .wt-phone-tab { display: contents; }\n.markdown-body .wt-phone-tab input { position: absolute; opacity: 0; pointer-events: none; }\n.markdown-body .wt-phone-label {\n  padding: 5px 12px;\n  border: 1.5px solid var(--wt-navy);\n  background: var(--wt-ceramic-2);\n  color: var(--wt-navy);\n  font: 800 12px/1.1 var(--wt-sans);\n  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);\n  cursor: pointer;\n}\n.markdown-body .wt-phone-page {\n  display: none;\n  flex-basis: 100%;\n  order: 2;\n  margin-top: 6px !important;\n  padding: 11px 14px !important;\n  background: #f8fbff;\n  border: 1.5px solid var(--wt-ice);\n  border-left: 4px solid var(--wt-sky);\n}\n.markdown-body .wt-phone-tab:has(input:checked) .wt-phone-label {\n  background: var(--wt-sun);\n  border-color: var(--wt-navy);\n  color: #fff;\n}\n.markdown-body .wt-phone-tab:has(input:checked) .wt-phone-page {\n  display: block;\n}\n/* <抉择> 关键分岔卡 */\n.markdown-body .wt-decision {\n  border-left: 6px solid var(--wt-gold) !important;\n  background: linear-gradient(180deg, #fffdf7, #ffffff) !important;\n}\n.markdown-body .wt-decision > header {\n  background: var(--wt-navy);\n  color: var(--wt-gold) !important;\n}\n.markdown-body .wt-choice {\n  display: block;\n  width: 100%;\n  margin: 8px 0 0;\n  padding: 10px 14px;\n  background: #ffffff;\n  border: 2px solid var(--wt-navy);\n  border-left: 6px solid var(--wt-gold);\n  clip-path: polygon(0 0, calc(100% - 11px) 0, 100% 11px, 100% 100%, 0 100%);\n  font: 800 14px/1.5 var(--wt-sans);\n  color: var(--wt-navy);\n  text-align: left;\n  cursor: pointer;\n  box-shadow: 3px 3px 0 rgba(27, 35, 64, 0.14);\n  transition: transform 0.13s;\n}\n.markdown-body .wt-choice:hover {\n  transform: translateX(4px);\n  border-left-color: var(--wt-sun);\n}\n\n/* ==================== 8. 番剧 NEXT // 三色切角行动指令条（彻底隐藏假输入框！） ==================== */\n.markdown-body .wt-dock {\n  display: none !important;\n}\n.markdown-body .wt-next {\n  margin: 18px 0 0 !important;\n  max-width: none !important;\n  background: linear-gradient(180deg, #f0f6ff 0%, #e5effc 100%);\n  border-top: 2px solid var(--wt-navy);\n  padding: 15px clamp(16px, 4vw, 38px) 18px;\n}\n.markdown-body .v7-next-hd {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  gap: 8px;\n  margin-bottom: 10px;\n}\n.markdown-body .v7-next-hd b {\n  font: 900 14.5px/1 var(--wt-mono);\n  letter-spacing: 0.08em;\n  color: var(--wt-navy);\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n}\n.markdown-body .v7-next-hd b em {\n  background: var(--wt-navy);\n  color: var(--wt-gold);\n  padding: 3px 8px;\n  font-style: normal;\n  transform: skewX(-12deg);\n}\n.markdown-body .v7-next-hd span {\n  font: 700 12px/1.2 var(--wt-sans);\n  color: var(--wt-muted);\n}\n.markdown-body .v7-opt-list {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n.markdown-body .wt-strip.wt-opt {\n  --oc: var(--wt-sky);\n  width: 100%;\n  margin: 0 !important;\n  background: #ffffff;\n  border: 2px solid var(--wt-navy);\n  border-left: 7px solid var(--oc);\n  clip-path: polygon(0 0, calc(100% - 13px) 0, 100% 13px, 100% 100%, 0 100%);\n  padding: 10px 15px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  transform: none !important;\n  box-shadow: 4px 4px 0 rgba(27, 35, 64, 0.13);\n  cursor: pointer;\n  text-align: left;\n  transition: transform 0.14s, box-shadow 0.14s;\n}\n.markdown-body .wt-strip.wt-opt > * { transform: none !important; }\n.markdown-body .wt-strip.wt-opt::before { display: none !important; }\n.markdown-body .wt-strip.wt-opt:nth-of-type(2),\n.markdown-body .wt-strip.wt-opt[data-p12-label=\"冒险\"] {\n  --oc: var(--wt-hot);\n}\n.markdown-body .wt-strip.wt-opt:nth-of-type(3),\n.markdown-body .wt-strip.wt-opt[data-p12-label=\"意外\"],\n.markdown-body .wt-strip.wt-opt[data-p12-label=\"出人意料\"] {\n  --oc: #f59e0b;\n}\n.markdown-body .wt-strip.wt-opt:hover {\n  transform: translateX(5px) !important;\n  box-shadow: 6px 6px 0 var(--oc);\n}\n.markdown-body .wt-strip.wt-opt .k {\n  width: auto !important;\n  background: var(--oc);\n  color: #fff !important;\n  font: 900 11.5px/1 var(--wt-sans) !important;\n  font-style: normal !important;\n  padding: 4px 9px;\n  transform: skewX(-12deg) !important;\n  flex: none;\n}\n.markdown-body .wt-strip.wt-opt .m {\n  font: 800 14.5px/1.45 var(--wt-sans) !important;\n  color: var(--wt-navy);\n  flex: 1;\n}\n\n/* ==================== 9. 底部机能状态摘要与折叠条 (.wt-status / .wt-progress / .wt-roster) ==================== */\n.markdown-body .wt-status.v7-status-strip {\n  margin: 12px clamp(14px, 4vw, 38px) 0 !important;\n  border: 2px solid var(--wt-navy) !important;\n  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);\n  box-shadow: none !important;\n}\n.markdown-body .wt-status.v7-status-strip > summary {\n  background: var(--wt-navy);\n  color: #fff !important;\n  padding: 8px 16px;\n  font: 800 12px/1.2 var(--wt-mono);\n  flex-wrap: wrap;\n  gap: 14px;\n}\n.markdown-body .wt-status.v7-status-strip > summary b { color: var(--wt-gold); }\n.markdown-body .v7-st-dot {\n  width: 8px;\n  height: 8px;\n  border-radius: 50%;\n  background: var(--wt-mint);\n  box-shadow: 0 0 8px var(--wt-mint);\n  display: inline-block;\n}\n.markdown-body .v7-st-more {\n  margin-left: auto;\n  font: 700 11px/1 var(--wt-sans);\n  color: #93c5fd;\n}\n.markdown-body .wt-progress > summary,\n.markdown-body .wt-roster > summary,\n.markdown-body .wt-battle-fold > summary {\n  background: var(--wt-ceramic-2) !important;\n  color: var(--wt-navy) !important;\n  border-left: 5px solid var(--wt-sky);\n  font-size: 12.5px;\n}\n\n/* 窄屏 / 手机竖屏流式折叠 */\n@media (max-width: 680px) {\n  .centered-message-shell:has(.p12-page-seed),\n  .centered-message-shell:has(.wt-story) {\n    width: 100% !important;\n    max-width: 100% !important;\n  }\n  .markdown-body .wt-story {\n    clip-path: none;\n    border-left: 0;\n    border-right: 0;\n    font-size: 15.5px;\n  }\n  .markdown-body .wt-scene.v7-scene-bar {\n    grid-template-columns: 1fr;\n  }\n  .markdown-body .v7-sb-citywin {\n    height: 68px;\n    clip-path: none;\n    border-left: 0;\n    border-top: 2px solid var(--wt-sun);\n  }\n  .markdown-body .v7-news-body.has-shot {\n    grid-template-columns: 1fr;\n  }\n  .markdown-body .v7-news-shot {\n    border-right: 0;\n    border-bottom: 2px solid var(--wt-navy);\n    min-height: 156px;\n  }\n  .markdown-body .wt-dex {\n    grid-template-columns: 1fr;\n  }\n  .markdown-body .v7-dex-stage {\n    border-right: 0;\n    border-bottom: 2px solid var(--wt-ice);\n    min-height: 132px;\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .markdown-body .wt-story * { animation: none !important; transition: none !important; }\n}\n";
 ;
+window.P12_WRISTBAND_V3_CSS="/* === WT-v7 / OS v3.0 云端手环即时变量与交互增强样式 === */\n.p12-ui-lock-banner {\n  position: fixed;\n  top: 12px;\n  left: 50%;\n  transform: translateX(-50%);\n  z-index: 99990;\n  max-width: min(740px, calc(100vw - 24px));\n  width: max-content;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  flex-wrap: wrap;\n  padding: 9px 14px;\n  background: #fff7ed;\n  color: #1b2340;\n  border: 2.5px solid #ff2e55;\n  border-left: 6px solid #ff6b2b;\n  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);\n  box-shadow: 0 10px 26px rgba(27, 35, 64, .22);\n  font: 700 12.5px/1.45 \"HarmonyOS Sans SC\", \"Source Han Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif;\n}\n.p12-ui-lock-banner b { color: #be123c; font-weight: 900; }\n.p12-ui-lock-btn {\n  border: 2px solid #1b2340;\n  background: linear-gradient(135deg, #ff6b2b, #ff2e55);\n  color: #fff;\n  padding: 5px 12px;\n  font: 900 12px/1.2 inherit;\n  cursor: pointer;\n  white-space: nowrap;\n  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);\n}\n.p12-ui-lock-btn:hover { filter: brightness(1.06); transform: translateY(-1px); }\n\n#p12hook .v7-sync-pill {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  padding: 1px 7px;\n  font: 800 10px/1.5 inherit;\n  border-radius: 3px;\n  background: rgba(16, 185, 129, .18);\n  color: #6ee7b7;\n  border: 1px solid rgba(16, 185, 129, .45);\n}\n#p12hook .v7-sync-pill.off {\n  background: rgba(245, 158, 11, .18);\n  color: #fde68a;\n  border-color: rgba(245, 158, 11, .45);\n}\n#p12hook .v7-sync-pill i {\n  width: 6px;\n  height: 6px;\n  border-radius: 50%;\n  background: currentColor;\n  display: inline-block;\n}\n#p12hook .v7-undo-hdr {\n  border: 1px solid rgba(255, 255, 255, .35);\n  background: rgba(255, 255, 255, .14);\n  color: #fff;\n  padding: 2px 7px;\n  font: 800 10.5px/1.3 inherit;\n  cursor: pointer;\n}\n#p12hook .v7-undo-hdr:hover { background: rgba(255, 107, 43, .85); border-color: #fff; }\n\n#p12hook .p12-lock-bar {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 8px;\n  padding: 7px 10px;\n  margin: 0 0 8px;\n  background: #fff1f2;\n  border: 1.5px solid #fda4af;\n  border-left: 4px solid #ff2e55;\n  font: 700 11.5px/1.4 inherit;\n  color: #881337;\n}\n\n#p12hook .v7-quick-bar {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 5px;\n  margin-top: 7px;\n  padding-top: 6px;\n  border-top: 1px dashed #cfe0f5;\n}\n#p12hook .v7-act-btn {\n  border: 1.5px solid #1b2340;\n  background: #fff;\n  color: #1b2340;\n  padding: 3px 8px;\n  font: 800 11px/1.25 inherit;\n  cursor: pointer;\n  clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);\n}\n#p12hook .v7-act-btn:hover { background: #dbeeff; }\n#p12hook .v7-act-btn.pri { background: #1da1f2; color: #fff; border-color: #0284c7; }\n#p12hook .v7-act-btn.sun { background: #ff6b2b; color: #fff; border-color: #c2410c; }\n#p12hook .v7-act-btn:disabled { opacity: .45; cursor: not-allowed; }\n#p12hook .v7-act-sel {\n  border: 1.5px solid #94a3b8;\n  background: #fff;\n  color: #1b2340;\n  padding: 2px 5px;\n  font: 700 11px/1.2 inherit;\n}\n\n#p12hook .v7-store-wrap {\n  margin-top: 7px;\n  background: #f8fbff;\n  border: 1.5px solid #cfe0f5;\n  padding: 7px 9px;\n}\n#p12hook .v7-store-hd {\n  font: 900 11px/1.2 inherit;\n  color: #52607a;\n  margin-bottom: 5px;\n  display: flex;\n  justify-content: space-between;\n}\n#p12hook .v7-store-pills { display: flex; flex-wrap: wrap; gap: 5px; }\n#p12hook .v7-store-pill {\n  border: 1.5px solid #93c5fd;\n  background: #fff;\n  color: #1b2340;\n  padding: 3px 8px;\n  font: 800 11px/1.25 inherit;\n  cursor: pointer;\n}\n#p12hook .v7-store-pill.on,\n#p12hook .v7-store-pill:hover { border-color: #ff6b2b; background: #fff7ed; color: #c2410c; }\n#p12hook .v7-swap-box {\n  margin-top: 6px;\n  padding: 6px 8px;\n  background: #fff7ed;\n  border: 1.5px solid #fdba74;\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 5px;\n  font: 700 11px/1.3 inherit;\n}\n\n#p12hook .v7-bag-list { display: flex; flex-direction: column; gap: 6px; }\n#p12hook .v7-bag-card {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 8px;\n  background: #fff;\n  border: 1.5px solid #cfe0f5;\n  padding: 6px 9px;\n  flex-wrap: wrap;\n}\n#p12hook .v7-bag-left { display: flex; align-items: center; gap: 7px; min-width: 0; flex: 1; }\n#p12hook .v7-bag-left b { font: 800 12.5px/1.2 inherit; color: #1b2340; }\n#p12hook .v7-bag-eff { font: 700 10.5px/1.2 inherit; color: #059669; margin-left: 4px; }\n#p12hook .v7-bag-ops { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }\n\n#p12hook .v7-shop-box {\n  margin-top: 9px;\n  border: 1.5px solid #1b2340;\n  background: #f8fbff;\n}\n#p12hook .v7-shop-box > summary {\n  padding: 6px 9px;\n  font: 900 11.5px/1.3 inherit;\n  color: #1b2340;\n  background: #e0f2fe;\n  cursor: pointer;\n  display: flex;\n  justify-content: space-between;\n}\n#p12hook .v7-shop-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));\n  gap: 6px;\n  padding: 8px;\n}\n#p12hook .v7-shop-item {\n  background: #fff;\n  border: 1.5px solid #cfe0f5;\n  padding: 6px 8px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  gap: 5px;\n}\n#p12hook .v7-shop-item small { font: 600 10.5px/1.35 inherit; color: #52607a; }\n\n#p12hook .v7-sch-form {\n  display: grid;\n  grid-template-columns: 74px 58px 86px 1fr auto;\n  gap: 4px;\n  margin-top: 6px;\n}\n#p12hook .v7-sch-form input,\n#p12hook .v7-search-inp {\n  border: 1.5px solid #cfe0f5;\n  padding: 4px 6px;\n  font: 700 11.5px/1.3 inherit;\n  background: #fff;\n  color: #1b2340;\n  min-width: 0;\n}\n#p12hook .v7-search-inp { width: 100%; margin-bottom: 7px; }\n\n#p12hook .v7-log-list { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }\n#p12hook .v7-log-row {\n  font: 600 11px/1.4 inherit;\n  padding: 4px 7px;\n  background: #f8fbff;\n  border-left: 3px solid #1da1f2;\n  color: #334155;\n  display: flex;\n  justify-content: space-between;\n  gap: 6px;\n}\n#p12hook .v7-log-row.wb { border-left-color: #10b981; }\n\n.p12-toast {\n  position: fixed;\n  right: 22px;\n  bottom: 82px;\n  z-index: 99995;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  max-width: min(400px, calc(100vw - 32px));\n  padding: 8px 12px;\n  background: #1b2340;\n  color: #fff;\n  border: 2px solid #10b981;\n  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);\n  box-shadow: 0 10px 26px rgba(27, 35, 64, .32);\n  font: 700 12px/1.4 \"HarmonyOS Sans SC\", \"PingFang SC\", sans-serif;\n}\n.p12-toast.err { border-color: #ff2e55; background: #4c0519; }\n.p12-toast button {\n  border: 1px solid rgba(255, 255, 255, .4);\n  background: #ff6b2b;\n  color: #fff;\n  padding: 2px 8px;\n  font: 900 11px/1.3 inherit;\n  cursor: pointer;\n}\n\n@media (max-width: 600px) {\n  .p12-ui-lock-banner { top: 6px; padding: 7px 10px; font-size: 11.5px; }\n  #p12hook .v7-sch-form { grid-template-columns: 1fr 1fr; }\n  #p12hook .v7-sch-form button { grid-column: span 2; }\n  .p12-toast { right: 12px; bottom: 76px; }\n}\n";
+;
 // <status> 解析器：把 AI 写的状态栏读成结构化数据，给手环 / UI 模板用。
 // 格式依据 05-世界书工程规格.md 2.7。原则：容错读，读不出的字段给 null（由调用方保留上一轮值并标「未同步」），绝不编值。
 (function (root) {
@@ -433,7 +435,11 @@ window.P12_PROSE_V7_CSS="/* ====================================================
   function text(v) { return String(v == null ? '' : v).trim(); }
   function identityKey(id) {
     if (!id || !text(id.saveId) || !text(id.owned ? id.nick : id.species)) throw fail('INVALID_IDENTITY');
-    return JSON.stringify([1, text(id.saveId), id.owned ? 'nick' : 'species', text(id.owned ? id.nick : id.species)]);
+    if (!id.owned) return JSON.stringify([1, text(id.saveId), 'species', text(id.species)]);
+    var sp = text(id.species);
+    return sp
+      ? JSON.stringify([1, text(id.saveId), 'owned', text(id.nick), sp])
+      : JSON.stringify([1, text(id.saveId), 'nick', text(id.nick)]);
   }
   function httpURL(raw) {
     var u;
@@ -718,7 +724,12 @@ window.P12_PROSE_V7_CSS="/* ====================================================
         if (url) { try { return { kind: 'builtin', record: { source: 'default', mode: 'transparent', url: httpURL(url) } }; } catch (_) {} }
         return { kind: 'silhouette', types: Array.isArray(id.types) ? id.types.map(text) : [] };
       },
-      restore: id => store.remove(identityKey(id)),
+      restore: async function (id) {
+        await store.remove(identityKey(id));
+        if (id && id.owned && text(id.nick) && text(id.species)) {
+          await store.remove(JSON.stringify([1, text(id.saveId), 'nick', text(id.nick)]));
+        }
+      },
       generate: async function (args) {
         var a = args || {};
         // 此检查必须最先，取消时连平台设置也不读。
@@ -740,7 +751,9 @@ window.P12_PROSE_V7_CSS="/* ====================================================
         if (!bundle || bundle.v !== 1 || !Array.isArray(bundle.portraits)) throw fail('INVALID_EXPORT');
         var entries = bundle.portraits.map(function (x) {
           var id; try { id = JSON.parse(x.key); } catch (_) { throw fail('INVALID_IDENTITY'); }
-          if (!Array.isArray(id) || id.length !== 4 || id[0] !== 1 || !['nick', 'species'].includes(id[2]) || !text(id[1]) || !text(id[3])) throw fail('INVALID_IDENTITY');
+          var valid4 = Array.isArray(id) && id.length === 4 && id[0] === 1 && ['nick', 'species'].includes(id[2]) && text(id[1]) && text(id[3]);
+          var valid5 = Array.isArray(id) && id.length === 5 && id[0] === 1 && id[2] === 'owned' && text(id[1]) && text(id[3]) && text(id[4]);
+          if (!valid4 && !valid5) throw fail('INVALID_IDENTITY');
           return { key: x.key, record: portraitRecord(x.record) };
         });
         for (var entry of entries) await store.put(entry.key, entry.record);
@@ -1156,6 +1169,1217 @@ window.P12_PROSE_V7_CSS="/* ====================================================
 })(typeof window !== 'undefined' ? window : globalThis);
 
 ;
+// hook/instant-vars.js — 契约之城即时变量引擎（对标《晓之夜歌》vista-ui 即时结算架构）
+// 直接读写 RP-Hub 宿主的 uiTemplate (p12-current-status-v1) variableState 与 changeLog，
+// 支持自动检测/一键开启 UI 模板、手环端确定性数值即改、单步撤销与战斗/野外结果回写。
+(function (root) {
+  'use strict';
+
+  var TEMPLATE_ID = 'p12-current-status-v1';
+  var SOURCE_TAG = 'p12-wristband';
+  var SCHEMA_KEYS = [
+    'name', 'license', 'badges', 'rank', 'funds', 'fundsNum', 'injury', 'difficulty',
+    'team', 'others', 'present', 'favor', 'bag', 'schedule', 'messages', 'record',
+    'dexCount', 'moveDex', 'scene'
+  ];
+
+  // 协会标准补给站目录（仅含通用合法常备物资，金额明码标价，即买即算）
+  var SHOP_CATALOG = [
+    { id: 'spray_basic', name: '基础回复喷雾', price: 200, desc: '恢复单只异兽 30% 体力，疲劳 -10' },
+    { id: 'spray_high', name: '高效回复喷雾', price: 600, desc: '恢复单只异兽 60% 体力，疲劳 -20' },
+    { id: 'remedy', name: '状态清解剂', price: 300, desc: '解除异兽异常伤势，疲劳 -15' },
+    { id: 'energy_cube', name: '异兽能量方块', price: 150, desc: '体力 +15%，疲劳 -25，羁绊 +2' },
+    { id: 'ball_normal', name: '普通契约球', price: 300, desc: '野外结契或替换备球（战斗界面可用）' },
+    { id: 'ball_great', name: '高级契约球', price: 800, desc: '较高捕捉加成契约球' },
+    { id: 'medkit', name: '便携急救包', price: 250, desc: '优先包扎驯兽师伤势，也可救治异兽' }
+  ];
+
+  // 确定性消耗品结算表（匹配名称关键词，按具体度由高到低排）
+  var ITEM_EFFECTS = [
+    { re: /满血药|全复药|全回复|秘制回复/, hp: 100, fatigue: -40, clearInjury: true, label: '满体+清伤+疲劳-40' },
+    { re: /高效回复喷雾|高级伤药|好伤药|高级回复/, hp: 60, fatigue: -20, label: '体力+60% · 疲劳-20' },
+    { re: /基础回复喷雾|回复喷雾|普通伤药|伤药/, hp: 30, fatigue: -10, label: '体力+30% · 疲劳-10' },
+    { re: /状态清解剂|清解剂|解毒药|万能药|活力碎片/, hp: 10, fatigue: -15, clearInjury: true, label: '清伤 · 体力+10% · 疲劳-15' },
+    { re: /能量方块|异兽口粮|特制零食|营养膏/, hp: 15, fatigue: -25, bond: 2, label: '体力+15% · 疲劳-25 · 羁绊+2' },
+    { re: /急救包|绷带|医疗包|止血/, hp: 25, clearInjury: true, canTreatTamer: true, label: '清伤（优先驯兽师）' }
+  ];
+
+  function clone(v) {
+    if (v === undefined) return undefined;
+    try { return JSON.parse(JSON.stringify(v)); } catch (e) { return v; }
+  }
+
+  function clamp(n, lo, hi) {
+    n = Number(n);
+    if (!isFinite(n)) return lo;
+    return Math.max(lo, Math.min(hi, Math.round(n)));
+  }
+
+  function matchItemEffect(name) {
+    var s = String(name || '').trim();
+    if (!s) return null;
+    for (var i = 0; i < ITEM_EFFECTS.length; i++) {
+      if (ITEM_EFFECTS[i].re.test(s)) return ITEM_EFFECTS[i];
+    }
+    return null;
+  }
+
+  function formatFunds(num, oldStr) {
+    var n = Math.max(0, Math.round(Number(num) || 0));
+    var raw = String(oldStr || '');
+    var symMatch = raw.match(/^(¥|￥|\$|€|£|JPY\s*|RMB\s*)/i);
+    var sym = symMatch ? symMatch[1] : '¥';
+    return sym + n.toLocaleString('en-US');
+  }
+
+  function parseFundsNum(state) {
+    if (state && state.fundsNum != null && isFinite(Number(state.fundsNum))) return Number(state.fundsNum);
+    var m = String((state && state.funds) || '').replace(/,/g, '').match(/-?\d+(?:\.\d+)?/);
+    return m ? Number(m[0]) : 0;
+  }
+
+  function getTemplateList(st) {
+    if (!st) return [];
+    if (Array.isArray(st.activeUiTemplates) && st.activeUiTemplates.length) return st.activeUiTemplates;
+    if (Array.isArray(st.currentUiTemplates) && st.currentUiTemplates.length) return st.currentUiTemplates;
+    if (st.currentCharacter && Array.isArray(st.currentCharacter.uiTemplates)) return st.currentCharacter.uiTemplates;
+    if (Array.isArray(st.globalUiTemplates)) return st.globalUiTemplates;
+    return [];
+  }
+
+  function findTemplate(st) {
+    var lists = [
+      st && st.activeUiTemplates,
+      st && st.currentUiTemplates,
+      st && st.currentCharacter && st.currentCharacter.uiTemplates,
+      st && st.globalUiTemplates
+    ];
+    for (var i = 0; i < lists.length; i++) {
+      var arr = lists[i];
+      if (!Array.isArray(arr)) continue;
+      for (var j = 0; j < arr.length; j++) {
+        if (arr[j] && arr[j].id === TEMPLATE_ID) return arr[j];
+      }
+    }
+    return null;
+  }
+
+  // 检测 RP-Hub 宿主的 UI 模板设置是否符合强制游玩要求
+  function getHostStatus(st) {
+    var hasSettings = !!(st && st.settings && typeof st.settings === 'object');
+    var tpl = findTemplate(st);
+    var uiEnabled = hasSettings ? !!st.settings.uiTemplateEnabled : false;
+    var mainModel = hasSettings ? !!st.settings.uiTemplateMainModelAnalysis : false;
+    var injectCtx = hasSettings ? !!st.settings.uiTemplateInjectContext : false;
+    var tplFound = !!tpl;
+    var tplEnabled = tpl ? tpl.enabled !== false : false;
+    var locked = hasSettings ? !(uiEnabled && tplFound && tplEnabled) : false;
+    return {
+      hasHostSettings: hasSettings,
+      uiTemplateEnabled: uiEnabled,
+      mainModelMode: mainModel,
+      injectContext: injectCtx,
+      templateFound: tplFound,
+      templateEnabled: tplEnabled,
+      locked: locked,
+      readyToWrite: tplFound && (!hasSettings || (uiEnabled && tplEnabled))
+    };
+  }
+
+  function touchCharacterUiTemplates(st) {
+    if (!st) return;
+    try {
+      if (st.currentCharacter && Array.isArray(st.currentCharacter.uiTemplates)) {
+        st.currentCharacter.uiTemplates = st.currentCharacter.uiTemplates.slice();
+      }
+    } catch (e) {}
+    try {
+      if (typeof st.saveGlobalUiTemplateRuntimeForCharacter === 'function') {
+        st.saveGlobalUiTemplateRuntimeForCharacter(st.currentCharacter, st.currentStoryBranch && st.currentStoryBranch.id);
+      }
+    } catch (e) {}
+  }
+
+  // 一键强制开启宿主 UI 模板与主模型分析
+  function enableUiTemplate(st) {
+    if (!st) return { ok: false, reason: '未连接宿主状态' };
+    if (st.settings && typeof st.settings === 'object') {
+      st.settings.uiTemplateEnabled = true;
+      st.settings.uiTemplateMainModelAnalysis = true;
+      st.settings.uiTemplateInjectContext = true;
+    }
+    var tpl = findTemplate(st);
+    if (tpl) tpl.enabled = true;
+    touchCharacterUiTemplates(st);
+    return { ok: true, status: getHostStatus(st) };
+  }
+
+  function scopeOf(st) {
+    var c = (st && st.currentCharacter) || {};
+    var who = String(c.uuid || c.name || 'card');
+    var br = (st && st.currentStoryBranch && st.currentStoryBranch.id) || 'main';
+    return who + '|' + br;
+  }
+
+  function currentTurn(st) {
+    var h = (st && Array.isArray(st.chatHistory)) ? st.chatHistory : [];
+    var n = 0;
+    for (var i = 0; i < h.length; i++) {
+      var m = h[i];
+      if (!m || m.role !== 'assistant' || m.id === 'first' || m.isOpening) continue;
+      if (i === 0) continue; // 第一条通常是开场白
+      n++;
+    }
+    return n;
+  }
+
+  function hasUsefulState(vs) {
+    return !!(vs && typeof vs === 'object' && (vs.name || (Array.isArray(vs.team) && vs.team.length)));
+  }
+
+  function sanitizeBaseToSchema(baseState) {
+    var out = {};
+    if (!baseState || typeof baseState !== 'object') return out;
+    for (var i = 0; i < SCHEMA_KEYS.length; i++) {
+      var k = SCHEMA_KEYS[i];
+      if (Object.prototype.hasOwnProperty.call(baseState, k) && baseState[k] !== undefined) {
+        out[k] = clone(baseState[k]);
+      }
+    }
+    // 清理团队内部非 schema 字段（如果手环临时加过），保证严格通过 RP-Hub 校验
+    if (Array.isArray(out.team)) {
+      var teamAllowed = {
+        nick: 1, species: 1, stage: 1, types: 1, where: 1, hp: 1, injury: 1,
+        fatigue: 1, bond: 1, bondTier: 1, growth: 1, training: 1, moves: 1,
+        storage: 1, level: 1, exp: 1, expNeed: 1, bottleneck: 1
+      };
+      out.team = out.team.map(function (b) {
+        if (!b || typeof b !== 'object') return b;
+        var nb = {};
+        Object.keys(teamAllowed).forEach(function (tk) {
+          if (Object.prototype.hasOwnProperty.call(b, tk) && b[tk] !== undefined) nb[tk] = b[tk];
+        });
+        return nb;
+      });
+    }
+    return out;
+  }
+
+  // 当宿主全局未挂载 RPHubUiTemplateUtils（如精简测试环境）时使用的等价原子合入器
+  function localApplyUpdate(tpl, patch, turn) {
+    if (!tpl.variableState || typeof tpl.variableState !== 'object') tpl.variableState = {};
+    var changes = {};
+    var keys = Object.keys(patch || {});
+    for (var i = 0; i < keys.length; i++) {
+      var k = keys[i];
+      var fromVal = clone(tpl.variableState[k]);
+      var toVal = clone(patch[k]);
+      if (JSON.stringify(fromVal) !== JSON.stringify(toVal)) {
+        tpl.variableState[k] = toVal;
+        changes[k] = { from: fromVal === undefined ? null : fromVal, to: toVal };
+      }
+    }
+    var count = Object.keys(changes).length;
+    if (count > 0) {
+      if (!Array.isArray(tpl.changeLog)) tpl.changeLog = [];
+      tpl.changeLog.unshift({
+        id: 'p12-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7),
+        time: Date.now(),
+        source: SOURCE_TAG,
+        model: '',
+        turn: turn,
+        changes: changes
+      });
+      tpl.changeLog = tpl.changeLog.slice(0, 50);
+    }
+    return { changed: count > 0, fieldCount: count };
+  }
+
+  function broadcastSnapshot(st, state) {
+    var snapState = clone(state || {});
+    var ready = !!(snapState && snapState.name && snapState.scene && snapState.scene.time);
+    var prev = root.P12UiState;
+    var seq = (prev && isFinite(Number(prev.seq))) ? (Number(prev.seq) + 1) : 1;
+    var snap = { version: 2, seq: seq, scope: scopeOf(st), ready: ready, fields: snapState };
+    try { root.P12UiState = snap; } catch (e) {}
+    try {
+      if (typeof root.dispatchEvent === 'function' && typeof root.CustomEvent === 'function') {
+        root.dispatchEvent(new root.CustomEvent('p12-ui-state', { detail: snap }));
+      }
+    } catch (e) {}
+    return snap;
+  }
+
+  // 将变更提交进 RP-Hub variableState 与 changeLog，并立即广播
+  function commit(st, patch, summary, opts) {
+    opts = opts || {};
+    var status = getHostStatus(st);
+    if (status.locked) {
+      return { ok: false, locked: true, reason: '请先开启 RP-Hub UI 模板后再执行即时结算' };
+    }
+    var tpl = findTemplate(st);
+    if (!tpl) {
+      return { ok: false, reason: '未在当前角色卡找到状态模板 ' + TEMPLATE_ID };
+    }
+
+    var mergedPatch = {};
+    // 若模板变量尚未初始化，先以当前可靠基线补齐所有 schema 字段，防止丢失数据
+    if (!hasUsefulState(tpl.variableState) && opts.baseState) {
+      var base = sanitizeBaseToSchema(opts.baseState);
+      Object.keys(base).forEach(function (k) { mergedPatch[k] = base[k]; });
+    }
+    Object.keys(patch || {}).forEach(function (k) {
+      mergedPatch[k] = clone(patch[k]);
+    });
+
+    var turn = currentTurn(st);
+    var utils = root.RPHubUiTemplateUtils;
+    var res;
+    if (utils && typeof utils.applyUiTemplateUpdateListToTemplate === 'function') {
+      res = utils.applyUiTemplateUpdateListToTemplate(
+        tpl,
+        [{ id: tpl.id, variables: mergedPatch }],
+        { model: '', turn: turn, source: SOURCE_TAG }
+      );
+    } else {
+      res = localApplyUpdate(tpl, mergedPatch, turn);
+    }
+
+    if (res && res.changed && Array.isArray(tpl.changeLog) && tpl.changeLog[0] && summary) {
+      tpl.changeLog[0]._label = String(summary).slice(0, 120);
+    }
+    touchCharacterUiTemplates(st);
+    broadcastSnapshot(st, tpl.variableState);
+
+    return {
+      ok: true,
+      changed: !!(res && res.changed),
+      fieldCount: (res && res.fieldCount) || 0,
+      summary: summary || '已即时同步',
+      state: tpl.variableState
+    };
+  }
+
+  function setByDotPath(obj, dotPath, val) {
+    var parts = String(dotPath || '').split('.').filter(Boolean);
+    if (!parts.length) return;
+    var cur = obj;
+    for (var i = 0; i < parts.length - 1; i++) {
+      var p = parts[i];
+      if (!cur[p] || typeof cur[p] !== 'object') cur[p] = {};
+      cur = cur[p];
+    }
+    cur[parts[parts.length - 1]] = val;
+  }
+
+  function undoLast(st) {
+    var tpl = findTemplate(st);
+    if (!tpl || !Array.isArray(tpl.changeLog) || !tpl.changeLog.length) {
+      return { ok: false, reason: '没有可撤销的记录' };
+    }
+    var latest = tpl.changeLog[0];
+    if (!latest || latest.source !== SOURCE_TAG) {
+      return { ok: false, reason: '最新一条变更来自 AI 或系统，不支持手环单步撤销' };
+    }
+    tpl.changeLog.shift();
+    if (!tpl.variableState || typeof tpl.variableState !== 'object') tpl.variableState = {};
+    var changes = latest.changes || {};
+    Object.keys(changes).forEach(function (k) {
+      var ch = changes[k];
+      if (!ch || !Object.prototype.hasOwnProperty.call(ch, 'from')) return;
+      if (k === '$root') {
+        tpl.variableState = clone(ch.from || {});
+      } else {
+        setByDotPath(tpl.variableState, k, clone(ch.from === undefined ? null : ch.from));
+      }
+    });
+    touchCharacterUiTemplates(st);
+    broadcastSnapshot(st, tpl.variableState);
+    return { ok: true, summary: latest._label || '最近一次手环修改', state: tpl.variableState };
+  }
+
+  function recentLogs(st, limit) {
+    var tpl = findTemplate(st);
+    if (!tpl || !Array.isArray(tpl.changeLog)) return [];
+    return tpl.changeLog.slice(0, limit || 8);
+  }
+
+  function workingState(st, baseState) {
+    var tpl = findTemplate(st);
+    if (tpl && hasUsefulState(tpl.variableState)) return sanitizeBaseToSchema(tpl.variableState);
+    return sanitizeBaseToSchema(baseState || {});
+  }
+
+  // ---------- 6 大确定性即时结算动作 ----------
+
+  function setLead(st, baseState, idx) {
+    var cur = workingState(st, baseState);
+    var team = Array.isArray(cur.team) ? cur.team.slice() : [];
+    idx = Number(idx);
+    if (!(idx > 0 && idx < team.length)) return { ok: false, reason: '无效队伍索引' };
+    var picked = team.splice(idx, 1)[0];
+    team.unshift(picked);
+    if (!picked.where || picked.where === '球内' || picked.where === '球中') picked.where = '在外';
+    return commit(st, { team: team }, '将「' + (picked.nick || picked.species) + '」设为首发', { baseState: baseState });
+  }
+
+  function toggleWhere(st, baseState, idx) {
+    var cur = workingState(st, baseState);
+    var team = Array.isArray(cur.team) ? clone(cur.team) : [];
+    idx = Number(idx);
+    if (!(idx >= 0 && idx < team.length)) return { ok: false, reason: '无效队伍索引' };
+    var b = team[idx];
+    var inBall = /球内|球中/.test(String(b.where || ''));
+    b.where = inBall ? '在外' : '球内';
+    return commit(st, { team: team }, (b.nick || b.species) + ' → ' + b.where, { baseState: baseState });
+  }
+
+  function setTraining(st, baseState, idx, training) {
+    var cur = workingState(st, baseState);
+    var team = Array.isArray(cur.team) ? clone(cur.team) : [];
+    idx = Number(idx);
+    if (!(idx >= 0 && idx < team.length)) return { ok: false, reason: '无效队伍索引' };
+    var tr = String(training || '').trim();
+    if (!tr) return { ok: false, reason: '训练倾向不能为空' };
+    team[idx].training = tr;
+    return commit(st, { team: team }, (team[idx].nick || team[idx].species) + ' 训练倾向 → ' + tr, { baseState: baseState });
+  }
+
+  function swapMove(st, baseState, beastIdx, activeSlotIdx, storageIdx) {
+    var cur = workingState(st, baseState);
+    var team = Array.isArray(cur.team) ? clone(cur.team) : [];
+    beastIdx = Number(beastIdx);
+    activeSlotIdx = Number(activeSlotIdx);
+    storageIdx = Number(storageIdx);
+    if (!(beastIdx >= 0 && beastIdx < team.length)) return { ok: false, reason: '无效队伍索引' };
+    var b = team[beastIdx];
+    b.moves = Array.isArray(b.moves) ? b.moves.slice() : [];
+    b.storage = Array.isArray(b.storage) ? b.storage.slice() : [];
+    if (!(storageIdx >= 0 && storageIdx < b.storage.length)) return { ok: false, reason: '无效仓库招式' };
+    var chosen = b.storage[storageIdx];
+    if (activeSlotIdx < 0) {
+      if (b.moves.length >= 4) return { ok: false, reason: '出战招式已满 4 招，请选择被替换槽位' };
+      b.storage.splice(storageIdx, 1);
+      b.moves.push(chosen);
+      return commit(st, { team: team }, (b.nick || b.species) + ' 装备招式「' + String(chosen) + '」', { baseState: baseState });
+    }
+    if (!(activeSlotIdx >= 0 && activeSlotIdx < b.moves.length)) return { ok: false, reason: '无效出战招式槽位' };
+    var prev = b.moves[activeSlotIdx];
+    b.moves[activeSlotIdx] = chosen;
+    b.storage[storageIdx] = prev;
+    return commit(st, { team: team }, (b.nick || b.species) + ' 换招：' + String(chosen), { baseState: baseState });
+  }
+
+  function useBagItem(st, baseState, bagIdx, target) {
+    var cur = workingState(st, baseState);
+    var bag = Array.isArray(cur.bag) ? clone(cur.bag) : [];
+    bagIdx = Number(bagIdx);
+    if (!(bagIdx >= 0 && bagIdx < bag.length)) return { ok: false, reason: '无效背包槽位' };
+    var item = bag[bagIdx];
+    var eff = matchItemEffect(item.name);
+    if (!eff) {
+      return { ok: false, nonConsumable: true, name: item.name, reason: '非即时恢复道具，请带入剧情使用' };
+    }
+
+    target = target || {};
+    var patch = {};
+    var summary = '';
+    if (target.kind === 'tamer') {
+      if (!eff.canTreatTamer) return { ok: false, reason: '该道具只供异兽使用' };
+      if (!cur.injury || cur.injury === '无') return { ok: false, reason: '驯兽师当前无伤势' };
+      patch.injury = '无';
+      summary = '驯兽师使用「' + item.name + '」→ 伤势清零';
+    } else {
+      var team = Array.isArray(cur.team) ? clone(cur.team) : [];
+      var bi = Number(target.idx || 0);
+      if (!(bi >= 0 && bi < team.length)) return { ok: false, reason: '请选择出战异兽' };
+      var b = team[bi];
+      var hp0 = b.hp == null ? 100 : Number(b.hp);
+      var fat0 = b.fatigue == null ? 0 : Number(b.fatigue);
+      var inj0 = String(b.injury || '无');
+      var bond0 = b.bond == null ? 0 : Number(b.bond);
+
+      var hp1 = eff.hp ? clamp(hp0 + eff.hp, 0, 100) : hp0;
+      var fat1 = eff.fatigue ? clamp(fat0 + eff.fatigue, 0, 100) : fat0;
+      var inj1 = eff.clearInjury ? '无' : (inj0 !== '无' && hp1 >= 70 && inj0 === '重伤' ? '轻伤' : (hp1 >= 90 && inj0 !== '无' ? '无' : inj0));
+      var bond1 = eff.bond ? clamp(bond0 + eff.bond, 0, 100) : bond0;
+
+      if (hp1 === hp0 && fat1 === fat0 && inj1 === inj0 && bond1 === bond0) {
+        return { ok: false, reason: (b.nick || b.species) + ' 状态已满，无需消耗道具' };
+      }
+      b.hp = hp1;
+      b.fatigue = fat1;
+      b.injury = inj1;
+      if (eff.bond) b.bond = bond1;
+      patch.team = team;
+      summary = '对「' + (b.nick || b.species) + '」用 ' + item.name + '（HP ' + hp0 + '→' + hp1 + '%）';
+    }
+
+    var qty = item.qty == null ? 1 : Number(item.qty);
+    if (qty <= 1) bag.splice(bagIdx, 1);
+    else bag[bagIdx].qty = qty - 1;
+    patch.bag = bag;
+
+    return commit(st, patch, summary, { baseState: baseState });
+  }
+
+  function buyShopItem(st, baseState, itemId) {
+    var goods = null;
+    for (var i = 0; i < SHOP_CATALOG.length; i++) {
+      if (SHOP_CATALOG[i].id === itemId) { goods = SHOP_CATALOG[i]; break; }
+    }
+    if (!goods) return { ok: false, reason: '未知补给品' };
+    var cur = workingState(st, baseState);
+    var fundsNum = parseFundsNum(cur);
+    if (fundsNum < goods.price) {
+      return { ok: false, reason: '余额不足：需要 ¥' + goods.price + '，当前 ¥' + fundsNum };
+    }
+    var newFundsNum = fundsNum - goods.price;
+    var newFundsStr = formatFunds(newFundsNum, cur.funds);
+    var bag = Array.isArray(cur.bag) ? clone(cur.bag) : [];
+    var hit = null;
+    for (var j = 0; j < bag.length; j++) {
+      if (bag[j] && bag[j].name === goods.name) { hit = bag[j]; break; }
+    }
+    if (hit) hit.qty = (hit.qty == null ? 1 : Number(hit.qty)) + 1;
+    else bag.push({ name: goods.name, qty: 1 });
+
+    return commit(st, {
+      funds: newFundsStr,
+      fundsNum: newFundsNum,
+      bag: bag
+    }, '购入「' + goods.name + '」×1（-' + formatFunds(goods.price, cur.funds) + '）', { baseState: baseState });
+  }
+
+  function adjustBag(st, baseState, bagIdx, delta) {
+    var cur = workingState(st, baseState);
+    var bag = Array.isArray(cur.bag) ? clone(cur.bag) : [];
+    bagIdx = Number(bagIdx);
+    if (!(bagIdx >= 0 && bagIdx < bag.length)) return { ok: false, reason: '无效物品' };
+    var item = bag[bagIdx];
+    var nextQty = (item.qty == null ? 1 : Number(item.qty)) + Number(delta || 0);
+    if (nextQty <= 0) bag.splice(bagIdx, 1);
+    else item.qty = nextQty;
+    return commit(st, { bag: bag }, '整理背包：「' + item.name + '」' + (nextQty <= 0 ? ' 已移除' : ' ×' + nextQty), { baseState: baseState });
+  }
+
+  function completeSchedule(st, baseState, idx) {
+    var cur = workingState(st, baseState);
+    var sch = Array.isArray(cur.schedule) ? clone(cur.schedule) : [];
+    idx = Number(idx);
+    if (!(idx >= 0 && idx < sch.length)) return { ok: false, reason: '无效日程' };
+    var removed = sch.splice(idx, 1)[0];
+    return commit(st, { schedule: sch }, '划销日程「' + (removed.what || removed.raw || '约定') + '」', { baseState: baseState });
+  }
+
+  function addSchedule(st, baseState, item) {
+    item = item || {};
+    var date = String(item.date || '').trim();
+    var time = String(item.time || '').trim() || null;
+    var place = String(item.place || '').trim();
+    var what = String(item.what || '').trim();
+    if (!what) return { ok: false, reason: '请填写日程事由' };
+    var raw = [date + (time ? ' ' + time : ''), place, what].filter(Boolean).join('｜');
+    var cur = workingState(st, baseState);
+    var sch = Array.isArray(cur.schedule) ? clone(cur.schedule) : [];
+    sch.push({ raw: raw, date: date || null, time: time, place: place || null, what: what });
+    return commit(st, { schedule: sch }, '记入日程「' + what + '」', { baseState: baseState });
+  }
+
+  function readMessage(st, baseState, idx) {
+    var cur = workingState(st, baseState);
+    var msgs = Array.isArray(cur.messages) ? clone(cur.messages) : [];
+    idx = Number(idx);
+    if (!(idx >= 0 && idx < msgs.length)) return { ok: false, reason: '无效讯息' };
+    var removed = msgs.splice(idx, 1)[0];
+    return commit(st, { messages: msgs }, '已读来自「' + (removed.from || '联系人') + '」的讯息', { baseState: baseState });
+  }
+
+  function clearMessages(st, baseState) {
+    var cur = workingState(st, baseState);
+    if (!Array.isArray(cur.messages) || !cur.messages.length) return { ok: false, reason: '暂无未读讯息' };
+    return commit(st, { messages: [] }, '清空全部未读讯息', { baseState: baseState });
+  }
+
+  function setDifficulty(st, baseState, diffText) {
+    var d = String(diffText || '').trim();
+    if (!d) return { ok: false, reason: '难度不能为空' };
+    return commit(st, { difficulty: d }, '切换难度 → ' + d, { baseState: baseState });
+  }
+
+  // 对战结束后立刻把我方队伍数值和消耗背包同步进 UI 变量（不用等下一轮 AI 抄状态栏）
+  function syncBattleResult(st, baseState, rep) {
+    if (!rep || typeof rep !== 'object') return { ok: false, reason: '无战报对象' };
+    if (getHostStatus(st).locked) return { ok: false, locked: true };
+    var cur = workingState(st, baseState);
+    var team = Array.isArray(cur.team) ? clone(cur.team) : [];
+    var patch = {};
+    var mine = Array.isArray(rep['我方']) ? rep['我方'] : [];
+    if (team.length && mine.length) {
+      mine.forEach(function (acc, i) {
+        var idx = acc['队伍位置'] != null ? Number(acc['队伍位置']) : i;
+        var dst = team[idx] || team.find(function (b) { return b.nick === acc['昵称']; });
+        if (!dst) return;
+        var hpM = String(acc['体力'] || '').match(/→\s*(\d+)/);
+        if (hpM) dst.hp = clamp(hpM[1], 0, 100);
+        if (acc['伤势']) dst.injury = String(acc['伤势']);
+        if (acc['疲劳终值'] != null) dst.fatigue = clamp(acc['疲劳终值'], 0, 100);
+        if (acc['经验当前'] != null) dst.exp = Number(acc['经验当前']);
+        if (acc['升级所需'] != null) dst.expNeed = Number(acc['升级所需']);
+        if (acc['Lv'] != null) dst.level = Number(acc['Lv']);
+        if (acc['瓶颈'] !== undefined) dst.bottleneck = acc['瓶颈'] ? '是' : null;
+        if (acc['成长终值'] != null) dst.growth = clamp(acc['成长终值'], 0, 100);
+        if (acc['羁绊终值'] != null) dst.bond = clamp(acc['羁绊终值'], 0, 100);
+      });
+      patch.team = team;
+    }
+    if (Array.isArray(rep['背包'])) {
+      patch.bag = rep['背包'].filter(function (x) { return x && x.name && (x.qty == null || Number(x.qty) > 0); })
+        .map(function (x) { return { name: String(x.name), qty: x.qty == null ? null : Number(x.qty) }; });
+    }
+    if (rep['驯兽师参战'] && rep['驯兽师参战']['驯兽师挂彩'] && rep['驯兽师参战']['驯兽师挂彩'] !== '无') {
+      patch.injury = String(rep['驯兽师参战']['驯兽师挂彩']);
+    }
+    if (!Object.keys(patch).length) return { ok: false, reason: '战报无可同步字段' };
+    return commit(st, patch, '战报实时同步（' + (rep['结果'] || '已结束') + '）', { baseState: baseState });
+  }
+
+  // 野外探险结束后同步队伍状态和背包战利品
+  function syncWildResult(st, baseState, payload) {
+    if (!payload || typeof payload !== 'object') return { ok: false, reason: '无野外结算载荷' };
+    if (getHostStatus(st).locked) return { ok: false, locked: true };
+    var cur = workingState(st, baseState);
+    var patch = {};
+    var remain = Array.isArray(payload['队伍残余']) ? payload['队伍残余'] : [];
+    var team = Array.isArray(cur.team) ? clone(cur.team) : [];
+    if (team.length && remain.length) {
+      remain.forEach(function (r, idx) {
+        var dst = team.find(function (b) { return b.nick === r['昵称'] || b.species === r['昵称']; }) || team[idx];
+        if (!dst) return;
+        if (r['体力'] != null) dst.hp = clamp(r['体力'], 0, 100);
+        if (r['疲劳'] != null) dst.fatigue = clamp(r['疲劳'], 0, 100);
+      });
+      patch.team = team;
+    }
+    var loot = payload['背包变动'];
+    if (loot && typeof loot === 'object') {
+      var bag = Array.isArray(cur.bag) ? clone(cur.bag) : [];
+      Object.keys(loot).forEach(function (name) {
+        var delta = Number(loot[name] || 0);
+        if (!delta) return;
+        var hit = bag.find(function (x) { return x && x.name === name; });
+        if (hit) hit.qty = Math.max(0, (hit.qty == null ? 1 : Number(hit.qty)) + delta);
+        else if (delta > 0) bag.push({ name: name, qty: delta });
+      });
+      patch.bag = bag.filter(function (x) { return x && (x.qty == null || x.qty > 0); });
+    }
+    if (!Object.keys(patch).length) return { ok: false, reason: '无可同步字段' };
+    return commit(st, patch, '野外探险实时同步（' + (payload['区域'] || '收获已入袋') + '）', { baseState: baseState });
+  }
+
+  var api = {
+    TEMPLATE_ID: TEMPLATE_ID,
+    SOURCE_TAG: SOURCE_TAG,
+    SHOP_CATALOG: SHOP_CATALOG,
+    ITEM_EFFECTS: ITEM_EFFECTS,
+    matchItemEffect: matchItemEffect,
+    getHostStatus: getHostStatus,
+    enableUiTemplate: enableUiTemplate,
+    commit: commit,
+    undoLast: undoLast,
+    recentLogs: recentLogs,
+    setLead: setLead,
+    toggleWhere: toggleWhere,
+    setTraining: setTraining,
+    swapMove: swapMove,
+    useBagItem: useBagItem,
+    buyShopItem: buyShopItem,
+    adjustBag: adjustBag,
+    completeSchedule: completeSchedule,
+    addSchedule: addSchedule,
+    readMessage: readMessage,
+    clearMessages: clearMessages,
+    setDifficulty: setDifficulty,
+    syncBattleResult: syncBattleResult,
+    syncWildResult: syncWildResult,
+    findTemplate: findTemplate
+  };
+
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  else root.P12InstantVars = api;
+})(typeof window !== 'undefined' ? window : this);
+
+;
+// hook/wristband-v3.js — WT-v7 / OS v3.0 云端手环全交互界面
+// 负责强制开启 RP-Hub UI 模板守卫、实时变量状态展示、7 大分页交互操作与一键即时结算。
+(function (root) {
+  'use strict';
+
+  var swapTargetStorageIdx = -1; // 正在准备换招的仓库索引
+  var bagTargetSel = 'beast:0';  // 背包使用目标（'tamer' 或 'beast:i'）
+  var dexQuery = '';             // 图鉴搜索关键词
+  var shopOpen = false;          // 补给站折叠态记忆
+
+  function IV() { return root.P12InstantVars || null; }
+
+  function renderLockBar(ctx) {
+    var iv = IV();
+    if (!iv) return '';
+    var hs = iv.getHostStatus(ctx.st);
+    if (!hs.locked) return '';
+    return '<div class="p12-lock-bar">' +
+      '<span>⚠ 未启用 RP-Hub UI 模板：手环即时写入已锁定</span>' +
+      '<button type="button" class="v7-act-btn sun" data-iv="enable-ui">⚡ 一键开启 UI 模板</button>' +
+    '</div>';
+  }
+
+  function renderDrawer(ctx) {
+    var iv = IV();
+    var hs = iv ? iv.getHostStatus(ctx.st) : { locked: false, readyToWrite: false };
+    var logs = iv ? iv.recentLogs(ctx.st, 1) : [];
+    var canUndo = !!(logs[0] && logs[0].source === 'p12-wristband');
+
+    var syncPill = hs.locked
+      ? '<span class="v7-sync-pill off"><i></i>未开 UI 模板</span>'
+      : (hs.readyToWrite
+        ? '<span class="v7-sync-pill"><i></i>即时同步</span>'
+        : '<span class="v7-sync-pill off"><i></i>正文账本</span>');
+
+    var s = ctx.viewState() || {};
+    var t = ctx.dialNow();
+    var customFull = ctx.load('tamerFull:' + ctx.scope(), '');
+    var avObj = s.name ? ctx.avatarOf(s.name, '', 'head') : null;
+    var avUrl = ctx.sprOkStr(customFull) ? customFull : (avObj && avObj.url ? avObj.url : '');
+    var badgeIcon = (root.P12_UI_ICONS || {})['association-badge'] || '';
+    var litBadges = ctx.parseBadgeLit(s.badges);
+    var hexHtml = '';
+    for (var bi = 0; bi < 8; bi++) {
+      hexHtml += '<span class="v7-hex' + (bi < litBadges ? ' lit' : '') + '">' + (bi < litBadges ? '★' : '') + '</span>';
+    }
+    var hurt = s.injury && s.injury !== '无';
+
+    var h = '<div class="v7-os-bar">' +
+        '<span>TAMER·LINK // OS v3.0</span>' +
+        '<span style="display:inline-flex;align-items:center;gap:6px">' +
+          syncPill +
+          (canUndo ? '<button type="button" class="v7-undo-hdr" data-iv="undo" title="撤销最近一次手环即时操作">↩ 撤销</button>' : '') +
+          '<span class="os-rt"><i></i><b>' + ctx.esc(t.hh) + '</b> · ' + ctx.esc(t.dt) + '</span>' +
+        '</span>' +
+        '<button type="button" class="p12-x" data-k="close" aria-label="关闭手环">✕</button>' +
+      '</div>' +
+      '<div class="v7-id-card">' +
+        renderLockBar(ctx) +
+        '<div class="v7-id-main">' +
+          '<div class="v7-id-av" data-goto-sys="1" title="点击配置驯兽师立绘"' + (avUrl ? ' style="background-image:url(\'' + ctx.esc(avUrl) + '\')"' : '') + '>' +
+            (avUrl ? '' : ctx.esc(String(s.name || '驯').slice(0, 1))) + '</div>' +
+          '<div class="v7-id-info">' +
+            '<div class="v7-id-r1"><span class="v7-id-nm">' + ctx.esc(s.name || '未登记驯兽师') + '</span>' +
+              '<span class="v7-id-lic">' + ctx.esc(s.license ? s.license + '驯兽师' : '待发证') + '</span></div>' +
+            '<div class="v7-id-r2"><span class="v7-id-funds">' + ctx.esc(s.funds || '¥ —') + '</span>' +
+              '<span>' + ctx.esc(s.rank || '未上榜') + '</span>' +
+              '<span class="v7-id-inj' + (hurt ? ' hurt' : '') + '">伤势·' + ctx.esc(s.injury || '无') + '</span>' +
+              (s.difficulty ? '<span style="color:#475569;font-size:10.5px">[' + ctx.esc(s.difficulty) + ']</span>' : '') +
+            '</div>' +
+          '</div>' +
+          (badgeIcon ? '<img class="v7-id-shield" src="' + ctx.esc(badgeIcon) + '" alt="ITA">' : '') +
+        '</div>' +
+        '<div class="v7-crest-bar">' +
+          '<span class="v7-crest-lbl">GYM CRESTS · 道馆徽章' + (s.badges ? '（' + ctx.esc(s.badges) + '）' : '') + '</span>' +
+          '<div class="v7-crest-slots">' + hexHtml + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="p12-tabs">' + ctx.TABS.map(function (x) {
+        var n = ctx.tabNum(x[0]);
+        return '<button type="button" class="p12-tab' + (ctx.getTab() === x[0] ? ' on' : '') + '" data-p="' + x[0] + '">' + x[1] + (n ? '<sup>' + n + '</sup>' : '') + '</button>';
+      }).join('') + '</div>' +
+      '<div class="p12-body">';
+
+    var curTab = ctx.getTab();
+    ctx.TABS.forEach(function (x) {
+      h += '<div class="p12-page' + (curTab === x[0] ? ' on' : '') + '" data-p="' + x[0] + '">' + ctx.PAGES[x[0]]() + '</div>';
+    });
+    h += '</div>';
+    return h;
+  }
+
+  function renderTeam(ctx) {
+    var s = ctx.viewState();
+    if (!s) return ctx.empty(ctx.hasParser ? '还没读到 AI 回复里的 <status>。装钩子后下一轮自动读。' : '正文解析器没装上，手环读不了 <status>。');
+    var team = s.team || [];
+    if (!team.length) return ctx.empty('尚未结契搭档异兽 · 去野外探索或完成登记吧') + ctx.presentHtml(s);
+    var sel = ctx.getSelBeast();
+    if (sel >= team.length) { sel = 0; ctx.setSelBeast(0); }
+
+    var strip = '<div class="v7-pod-strip">';
+    for (var si = 0; si < 6; si++) {
+      var sb = team[si];
+      if (sb) {
+        var shp = sb.hp == null ? 100 : ctx.clampPct(sb.hp);
+        var sbChain = ctx.creatureChain(sb.species || sb.nick, sb.types, sb);
+        var sbUrl = sbChain.length ? sbChain[0].url : '';
+        strip += '<div class="v7-pod-slot' + (si === sel ? ' sel' : '') + '" data-beast="' + si + '" title="' + ctx.esc((sb.nick || sb.species) + ' HP ' + shp + '%') + '">' +
+          '<div class="pod-spr"' + ctx.creatureAttrs(sb.species || sb.nick, sb.types, sb) + ' data-p12-contain=""' + (sbUrl ? ' style="background-image:url(\'' + ctx.esc(sbUrl) + '\')"' : '') + '></div>' +
+          '<div class="pod-hp' + (shp < 30 ? ' low' : '') + '"><i style="width:' + shp + '%"></i></div></div>';
+      } else {
+        strip += '<div class="v7-pod-slot empty">+</div>';
+      }
+    }
+    strip += '</div>';
+
+    var b = team[sel] || {};
+    var ts = (b.types || []).filter(Boolean);
+    var spName = b.species || b.nick || '';
+    var bChain = ctx.creatureChain(spName, b.types, b);
+    var bInitUrl = bChain.length ? bChain[0].url : '';
+    var isFlipped = typeof ctx.batFlipOf === 'function' ? ctx.batFlipOf(spName) : false;
+    var hpVal = b.hp == null ? 100 : ctx.clampPct(b.hp);
+    var cap = ctx.stageCap(b.stage);
+    var expPct = (b.expNeed && b.exp != null) ? ctx.clampPct(b.exp / b.expNeed * 100) : (b.bottleneck ? 100 : 0);
+    var grwVal = b.growth == null ? 0 : ctx.clampPct(+b.growth);
+    var inBall = /球内|球中/.test(String(b.where || ''));
+
+    var trainOpts = ['均衡', '进攻', '防守', '速度', '技巧', '耐力', '自由'];
+    var curTrain = String(b.training || '').trim();
+    if (curTrain && trainOpts.indexOf(curTrain) < 0) trainOpts.unshift(curTrain);
+
+    var quickBar = '<div class="v7-quick-bar">' +
+      (sel > 0 ? '<button type="button" class="v7-act-btn pri" data-iv="lead" data-idx="' + sel + '">★ 设为首发</button>' : '<span class="v7-act-btn" style="background:#dbeeff;cursor:default">★ 当前首发</span>') +
+      '<button type="button" class="v7-act-btn" data-iv="where" data-idx="' + sel + '">' + (inBall ? '⚪ 放出球外' : '🔴 收回球内') + '</button>' +
+      '<select class="v7-act-sel" data-iv-train="' + sel + '" aria-label="训练倾向">' +
+        trainOpts.map(function (tr) { return '<option value="' + ctx.esc(tr) + '"' + (tr === curTrain ? ' selected' : '') + '>训练·' + ctx.esc(tr) + '</option>'; }).join('') +
+      '</select>' +
+    '</div>';
+
+    var hero = '<div class="v7-beast-hero">' +
+      (b.level != null ? '<div class="v7-lv-wm">LV.' + ctx.esc(b.level) + '</div>' : '') +
+      '<div class="v7-hero-tools">' +
+        (spName ? '<button type="button" class="v7-tool-btn' + (isFlipped ? ' on' : '') + '" data-pflip="' + ctx.esc(spName) + '" title="切换该物种立绘左右朝向（同步对战舞台）">⇄ 朝向</button>' : '') +
+        '<button type="button" class="v7-tool-btn p12-pedit" data-pedit="' + sel + '" aria-label="设置' + ctx.esc(b.nick || spName || '异兽') + '的立绘">✎ 立绘</button>' +
+      '</div>' +
+      '<div class="v7-hero-grid">' +
+        '<div>' +
+          '<div class="v7-b-tags">' +
+            ts.map(function (t) { return ctx.hudTypeIcon(t, false); }).join('') +
+            (b.bondTier || b.bond != null ? '<span class="v7-bond-pill">♥ ' + ctx.esc(b.bondTier || ('羁绊 ' + b.bond)) + '</span>' : '') +
+          '</div>' +
+          '<div class="v7-b-nm">' + ctx.esc(b.nick || spName || '未名') + '</div>' +
+          '<div class="v7-b-sub">' + ctx.esc([b.stage, spName !== b.nick ? spName : null, b.where].filter(Boolean).join(' · ') || '阶段未登记') + '</div>' +
+          '<div class="v7-seg-lbl"><span>HP 体力</span><b>' + (b.hp == null ? '—' : hpVal + '%') + '</b></div>' +
+          ctx.segs12(hpVal, 'hp' + (hpVal < 30 ? ' low' : '')) +
+          '<div class="v7-seg-lbl"><span>EXP 经验' + (b.level != null ? ' · Lv ' + b.level + (cap ? '/' + cap : '') : '') + '</span><b' + (b.bottleneck ? ' style="color:var(--hot)"' : '') + '>' +
+            (b.bottleneck ? '瓶颈突破待定' : (b.expNeed && b.exp != null ? b.exp + '/' + b.expNeed : '—')) + '</b></div>' +
+          ctx.segs12(expPct, 'exp') +
+          (b.growth != null ? '<div class="v7-seg-lbl"><span>GROWTH 成长</span><b>' + b.growth + '/100' + (+b.growth >= 100 ? ' 可进化!' : '') + '</b></div>' + ctx.segs12(grwVal, 'grw') : '') +
+          '<div class="v7-b-meta">' +
+            (b.fatigue != null ? '<span>疲劳 ' + b.fatigue + '</span>' : '') +
+            (b.training ? '<span>训练·' + ctx.esc(b.training) + '</span>' : '') +
+            (b.injury && b.injury !== '无' ? '<span style="color:var(--hot);border-color:#fca5a5">伤势·' + ctx.esc(b.injury) + '</span>' : '') +
+          '</div>' +
+          quickBar +
+        '</div>' +
+        '<div class="v7-b-stage">' +
+          '<div class="v7-b-disc"></div>' +
+          '<div class="v7-b-art' + (isFlipped ? ' is-flipped' : '') + '"' + ctx.creatureAttrs(spName, b.types, b) + ' data-p12-contain=""' + (bInitUrl ? ' style="background-image:url(\'' + ctx.esc(bInitUrl) + '\')"' : '') + '></div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    var moves = b.moves || [];
+    var mvs = moves.map(function (m) {
+      var mi = ctx.parseMoveInfo(m, ts[0]);
+      var mc = ctx.tyC(mi.type || ts[0]);
+      return '<div class="v7-mv-card" style="--mc:' + mc + '">' +
+        ctx.hudTypeIcon(mi.type || ts[0], false) +
+        '<div style="min-width:0;flex:1"><b>' + ctx.esc(mi.name || '未名招式') + '</b>' +
+        '<small>' + ctx.esc([mi.type ? mi.type + '属性' : null, mi.tier ? mi.tier + '档' : null].filter(Boolean).join(' · ') || '常规招式') + '</small></div></div>';
+    }).join('');
+    var mvBlock = mvs ? '<div class="v7-move-grid">' + mvs + '</div>' : '';
+
+    var storage = b.storage || [];
+    var storeBlock = '';
+    if (storage.length) {
+      if (swapTargetStorageIdx >= storage.length) swapTargetStorageIdx = -1;
+      storeBlock = '<div class="v7-store-wrap">' +
+        '<div class="v7-store-hd"><span>📦 招式仓库（点击招式可即时替换出战槽位）</span><em>' + storage.length + ' 招</em></div>' +
+        '<div class="v7-store-pills">' + storage.map(function (sm, sIdx) {
+          var lb = ctx.moveLabel(sm);
+          return '<button type="button" class="v7-store-pill' + (swapTargetStorageIdx === sIdx ? ' on' : '') + '" data-iv="pick-store" data-sidx="' + sIdx + '">' + ctx.esc(lb) + '</button>';
+        }).join('') + '</div>';
+      if (swapTargetStorageIdx >= 0 && storage[swapTargetStorageIdx]) {
+        var pickedLabel = ctx.moveLabel(storage[swapTargetStorageIdx]);
+        storeBlock += '<div class="v7-swap-box">' +
+          '<span>将「' + ctx.esc(pickedLabel) + '」替换到：</span>' +
+          moves.map(function (am, aIdx) {
+            var mi = ctx.parseMoveInfo(am, ts[0]);
+            return '<button type="button" class="v7-act-btn sun" data-iv="swap-move" data-idx="' + sel + '" data-aidx="' + aIdx + '" data-sidx="' + swapTargetStorageIdx + '">换下 #' + (aIdx + 1) + ' ' + ctx.esc(mi.name || am) + '</button>';
+          }).join('') +
+          (moves.length < 4 ? '<button type="button" class="v7-act-btn pri" data-iv="swap-move" data-idx="' + sel + '" data-aidx="-1" data-sidx="' + swapTargetStorageIdx + '">＋ 直接装备</button>' : '') +
+          '<button type="button" class="v7-act-btn" data-iv="pick-store" data-sidx="-1">取消</button>' +
+        '</div>';
+      }
+      storeBlock += '</div>';
+    }
+
+    return strip + hero + mvBlock + storeBlock + ctx.presentHtml(s);
+  }
+
+  function renderBag(ctx) {
+    var iv = IV();
+    var s = ctx.viewState() || {};
+    var bag = s.bag || [];
+    var team = s.team || [];
+    var rawPlace = (s.scene && s.scene.place) || '';
+    var parts = String(rawPlace).split(/[·|｜]/).map(function (x) { return x.trim(); }).filter(Boolean);
+    var cityTag = parts.slice(1, 3).join('·') || parts[0] || '未知区域';
+    var spot = parts[parts.length - 1] || '当前位置';
+    var slotTag = [s.scene && s.scene.slot, s.scene && s.scene.type].filter(Boolean).join(' · ') || '实时雷达';
+    var picked = ctx.pickRadarArt(rawPlace);
+
+    var h = '<div class="v7-sec-hd"><span>🧭 区域雷达 &amp; 随身背包</span><em>' + ctx.esc(cityTag) + '</em></div>' +
+      '<div class="v7-map-box"' + (picked.url ? ' style="background-image:url(\'' + ctx.esc(picked.url) + '\')"' : '') + '>' +
+        '<div class="v7-map-pin">📍 ' + ctx.esc(spot) + '（当前）</div>' +
+        '<div class="v7-map-sub">' + ctx.esc(slotTag) + '</div>' +
+      '</div>';
+
+    var targetOpts = team.map(function (b, bi) {
+      var val = 'beast:' + bi;
+      return '<option value="' + val + '"' + (bagTargetSel === val ? ' selected' : '') + '>' + ctx.esc((b.nick || b.species) + ' HP ' + (b.hp == null ? '?' : b.hp + '%')) + '</option>';
+    }).join('') + '<option value="tamer"' + (bagTargetSel === 'tamer' ? ' selected' : '') + '>驯兽师本人（' + ctx.esc(s.injury || '无') + '）</option>';
+
+    h += '<div style="margin:6px 0;display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap">' +
+      '<span style="font:900 11px/1.2 inherit;color:var(--ink2)">随身背包物资（' + bag.length + ' 项）</span>' +
+      '<span style="font:700 11px/1.2 inherit;color:var(--ink2)">使用对象：<select class="v7-act-sel" data-iv-target="1">' + targetOpts + '</select></span>' +
+    '</div>';
+
+    if (!bag.length) {
+      h += ctx.empty(s.name ? '随身背包暂无物品' : '尚未读取到状态栏');
+    } else {
+      h += '<div class="v7-bag-list">' + bag.map(function (x, bIdx) {
+        var nm = x.name || '';
+        var eff = iv ? iv.matchItemEffect(nm) : null;
+        return '<div class="v7-bag-card">' +
+          '<div class="v7-bag-left">' +
+            '<span class="v7-bag-dot" style="background:' + ctx.bagDotColor(nm) + '"></span>' +
+            '<b>' + ctx.esc(nm) + '</b>' +
+            (x.qty == null ? '' : '<span class="qt">×' + x.qty + '</span>') +
+            (eff ? '<span class="v7-bag-eff">' + ctx.esc(eff.label) + '</span>' : '') +
+          '</div>' +
+          '<div class="v7-bag-ops">' +
+            (eff ? '<button type="button" class="v7-act-btn pri" data-iv="use-bag" data-bidx="' + bIdx + '">即刻使用</button>'
+                 : '<button type="button" class="v7-act-btn" data-iv="say-bag" data-name="' + ctx.esc(nm) + '">写入剧情</button>') +
+          '</div>' +
+        '</div>';
+      }).join('') + '</div>';
+    }
+
+    // 协会标准补给站（随时买、即扣钱加背包）
+    var catalog = iv ? iv.SHOP_CATALOG : [];
+    var fundsNum = (s.fundsNum != null && isFinite(+s.fundsNum)) ? +s.fundsNum : Number(String(s.funds || '').replace(/[^\d.-]/g, '')) || 0;
+    h += '<details class="v7-shop-box"' + (shopOpen ? ' open' : '') + ' data-iv-shop-details="1">' +
+      '<summary><span>🏪 协会标准补给站（即时购入）</span><span>可用资金：' + ctx.esc(s.funds || '¥0') + '</span></summary>' +
+      '<div class="v7-shop-grid">' + catalog.map(function (g) {
+        var canBuy = fundsNum >= g.price;
+        return '<div class="v7-shop-item">' +
+          '<div><div style="display:flex;justify-content:space-between;align-items:center"><b>' + ctx.esc(g.name) + '</b><span style="font:900 11px/1 inherit;color:var(--sun)">¥' + g.price + '</span></div>' +
+          '<small>' + ctx.esc(g.desc) + '</small></div>' +
+          '<button type="button" class="v7-act-btn' + (canBuy ? ' sun' : '') + '"' + (canBuy ? '' : ' disabled') + ' data-iv="buy" data-gid="' + ctx.esc(g.id) + '">' + (canBuy ? '购入 ×1' : '余额不足') + '</button>' +
+        '</div>';
+      }).join('') + '</div>' +
+    '</details>';
+
+    return h;
+  }
+
+  function renderSch(ctx) {
+    var s = ctx.viewState() || {};
+    var sch = s.schedule || [];
+    var now = ctx.sceneDate ? ctx.sceneDate() : null;
+    var defDate = now ? (String(now.m).padStart(2, '0') + '-' + String(now.d).padStart(2, '0')) : '';
+    var h = ctx.calGrid();
+    h += '<div style="margin:10px 0 6px;display:flex;justify-content:space-between;align-items:center">' +
+      '<span style="font:900 11px/1.2 inherit;letter-spacing:.08em;color:var(--sun)">▸ 当前约定日程（' + sch.length + '）</span>' +
+    '</div>';
+    if (!sch.length) {
+      h += ctx.empty('状态栏暂无【日程】约定');
+    } else {
+      sch.forEach(function (x, idx) {
+        var k = [x.date, x.time].filter(Boolean).join(' ');
+        h += '<div class="p12-row sch" style="justify-content:space-between;align-items:center;gap:6px">' +
+          '<div style="display:flex;gap:8px;min-width:0;flex:1"><span class="k">' + ctx.esc(k || '待定') + '</span><span class="v">' +
+          ctx.esc([x.place, x.what].filter(Boolean).join(' · ') || x.raw || '') + '</span></div>' +
+          '<button type="button" class="v7-act-btn" data-iv="done-sch" data-idx="' + idx + '" title="完成或划销这条约定">✓ 划销</button>' +
+        '</div>';
+      });
+    }
+    h += '<div class="v7-sch-form">' +
+      '<input data-sch-f="date" value="' + ctx.esc(defDate) + '" placeholder="MM-DD">' +
+      '<input data-sch-f="time" value="" placeholder="HH:MM">' +
+      '<input data-sch-f="place" value="" placeholder="地点">' +
+      '<input data-sch-f="what" value="" placeholder="新增约定事由…">' +
+      '<button type="button" class="v7-act-btn pri" data-iv="add-sch">＋ 记入</button>' +
+    '</div>';
+    return h;
+  }
+
+  function renderMsg(ctx) {
+    var ms = (ctx.viewState() && ctx.viewState().messages) || [];
+    var h = '<div class="v7-sec-hd"><span>💬 终端联络 · 讯息收件箱</span>' +
+      '<span style="display:inline-flex;align-items:center;gap:6px">' +
+        '<em>' + (ms.length ? '未读 ' + ms.length : '0') + '</em>' +
+        (ms.length ? '<button type="button" class="v7-act-btn" data-iv="clear-msg">全部已读</button>' : '') +
+      '</span></div>';
+    if (!ms.length) return h + ctx.empty('目前没有收到新讯息');
+    return h + ms.map(function (x, idx) {
+      var who = x.from || '未知发信人';
+      return '<div class="p12-row p12-c-row" style="border-left-color:var(--sun);justify-content:space-between;gap:8px">' +
+        '<div style="display:flex;gap:8px;align-items:center;min-width:0;flex:1" data-pa="' + ctx.esc(who) + '" data-sub="' + ctx.esc(x.text || '') + '">' +
+          ctx.avHtml(ctx.avatarOf(who, null, 'head'), 'p12-c-av', who) +
+          '<div style="flex:1;min-width:0"><div style="font:900 12px/1.2 inherit;color:var(--sun)">✉ ' + ctx.esc(who) + '</div>' +
+          '<div style="font:700 13px/1.5 inherit;color:var(--ink);margin-top:3px">' + ctx.esc(x.text || '') + '</div></div>' +
+        '</div>' +
+        '<div style="display:flex;flex-direction:column;gap:4px;flex:none">' +
+          '<button type="button" class="v7-act-btn pri" data-iv="reply-msg" data-from="' + ctx.esc(who) + '" data-text="' + ctx.esc(x.text || '') + '">回信</button>' +
+          '<button type="button" class="v7-act-btn" data-iv="read-msg" data-idx="' + idx + '">已读</button>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  function renderDex(ctx) {
+    var dex = ctx.load(ctx.scopeK('dex'), []), s = ctx.viewState();
+    var n = (s && s.dexCount != null) ? s.dexCount : dex.length;
+    var rec = (s && s.record) || {};
+    var moveCnt = (s && s.moveDex != null) ? s.moveDex : (rec['招式图鉴'] || '—');
+    var q = dexQuery.trim().toLowerCase();
+    var filtered = q ? dex.filter(function (c) {
+      return [c.name, c.stage, (c.types || []).join('/'), c.place, c.look].join(' ').toLowerCase().indexOf(q) >= 0;
+    }) : dex;
+
+    var h = '<div class="v7-sec-hd"><span>📘 异兽图鉴 &amp; 驯兽履历</span><em>已收录 ' + n + '</em></div>' +
+      '<div class="v7-rec-grid">' +
+        '<div class="v7-rec-cell"><small>物种图鉴</small><b>' + ctx.esc(n) + '</b></div>' +
+        '<div class="v7-rec-cell"><small>招式图鉴</small><b>' + ctx.esc(moveCnt) + '</b></div>' +
+        '<div class="v7-rec-cell"><small>城市足迹</small><b>' + ctx.esc(rec['足迹'] || '—') + '</b></div>' +
+        '<div class="v7-rec-cell"><small>正规战绩</small><b>' + ctx.esc(String(rec['战绩'] || '—').replace(/^正规\s*/, '')) + '</b></div>' +
+      '</div>';
+    if (dex.length) {
+      h += '<input class="v7-search-inp" data-iv-dexq="1" value="' + ctx.esc(dexQuery) + '" placeholder="🔍 搜图鉴：输入物种名 / 属性 / 发现地…">';
+    }
+    if (!filtered.length) return h + ctx.empty(dex.length ? '没有符合“' + dexQuery + '”的图鉴记录' : ('本局尚未触发 <图鉴> 新发现卡' + (n ? '（状态栏累计记录 ' + n + ' 种）' : '')));
+    filtered.slice().reverse().forEach(function (c) {
+      var cChain = ctx.creatureChain(c.name, c.types);
+      var cUrl = cChain.length ? cChain[0].url : '';
+      h += '<div class="v7-dex-row">' +
+        '<div class="v7-dex-thumb"' + ctx.creatureAttrs(c.name, c.types) + ' data-p12-contain=""' + (cUrl ? ' style="background-image:url(\'' + ctx.esc(cUrl) + '\')"' : '') + '></div>' +
+        '<div style="flex:1;min-width:0">' +
+          '<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">' +
+            '<b style="font-size:14.5px">' + ctx.esc(c.name) + '</b>' +
+            (c.stage ? '<span style="font:800 10.5px/1.2 inherit;color:var(--sky);background:#eef8ff;padding:1px 6px">' + ctx.esc(c.stage) + '</span>' : '') +
+            (c.types || []).map(function (t) { return ctx.hudTypeIcon(t, true); }).join('') +
+          '</div>' +
+          (c.look || c.place ? '<div style="font-size:11.5px;color:var(--ink2);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' +
+            ctx.esc([c.look, c.place ? '发现于 ' + c.place : null].filter(Boolean).join(' ｜ ')) + '</div>' : '') +
+        '</div></div>';
+    });
+    return h + '<div style="text-align:center;font:800 11px/1.4 inherit;color:var(--ink2);padding-top:4px">共收录 ' + n + ' 种异兽档案</div>';
+  }
+
+  function renderSys(ctx) {
+    var iv = IV();
+    var s = ctx.viewState() || {};
+    var hs = iv ? iv.getHostStatus(ctx.st) : {};
+    var logs = iv ? iv.recentLogs(ctx.st, 8) : [];
+    var canUndo = !!(logs[0] && logs[0].source === 'p12-wristband');
+
+    var h = '<div class="v7-sec-hd"><span>⚙ 终端设置 SYS</span><em>' + ctx.esc(ctx.VER) + '</em></div>';
+
+    // 卡片 0：UI 模板与即时变量中心
+    h += '<div class="v7-sys-card" style="border-left:4px solid ' + (hs.locked ? '#ff2e55' : '#10b981') + '">' +
+      '<div class="v7-sys-ttl"><span>⚡ UI 模板与即时变量中心</span>' +
+        '<span style="font-size:11px;font-weight:800;color:' + (hs.locked ? '#be123c' : '#059669') + '">' + (hs.locked ? '未完整开启' : '已激活即时写入') + '</span>' +
+      '</div>' +
+      '<div class="v7-sys-row"><span>全局 UI 模板开关 / 主模型分析</span><span>' + (hs.uiTemplateEnabled ? '✅ 已开' : '❌ 未开') + ' / ' + (hs.mainModelMode ? '✅ 主模型' : '○ 副模型') + '</span></div>' +
+      '<div class="v7-sys-row"><span>状态模板（p12-current-status-v1）</span><span>' + (hs.templateFound && hs.templateEnabled ? '✅ 已启用' : '❌ 未启用') + '</span></div>' +
+      '<div class="v7-sys-row"><span>难度档位快切</span><select class="v7-act-sel" data-iv-diff="1">' +
+        ['轻松', '标准', '硬核', '自定义'].map(function (d) { return '<option value="' + d + '"' + (String(s.difficulty || '标准').indexOf(d) >= 0 ? ' selected' : '') + '>' + d + '</option>'; }).join('') +
+      '</select></div>' +
+      '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px">' +
+        (hs.locked ? '<button type="button" class="v7-act-btn sun" data-iv="enable-ui">⚡ 一键强制开启 UI 模板</button>' : '') +
+        (canUndo ? '<button type="button" class="v7-act-btn" data-iv="undo">↩ 撤销最近手环修改</button>' : '') +
+      '</div>' +
+      (logs.length ? '<div class="v7-log-list">' + logs.map(function (lg) {
+        var isWb = lg.source === 'p12-wristband';
+        var txt = lg._label || ('变更 ' + Object.keys(lg.changes || {}).join('、'));
+        return '<div class="v7-log-row' + (isWb ? ' wb' : '') + '"><span>[' + (isWb ? '手环即时' : ctx.esc(lg.source || 'AI')) + '] ' + ctx.esc(txt) + '</span><span>T' + (lg.turn == null ? '-' : lg.turn) + '</span></div>';
+      }).join('') + '</div>' : '') +
+    '</div>';
+
+    return h + ctx.legacySysRestHtml();
+  }
+
+  function handleAction(btn, ctx) {
+    var iv = IV();
+    if (!iv || !btn) return false;
+    var act = btn.getAttribute('data-iv');
+    if (!act) return false;
+    var base = ctx.viewState();
+    var res = null;
+
+    if (act === 'enable-ui') {
+      res = iv.enableUiTemplate(ctx.st);
+      if (res && res.ok) {
+        syncLockBanner(ctx.doc, ctx.st, function () { ctx.render(); }, ctx.toast);
+        ctx.toast('✓ 已一键开启 RP-Hub UI 模板与即时变量同步！', false);
+        ctx.render();
+      }
+      return true;
+    }
+    if (act === 'undo') {
+      res = iv.undoLast(ctx.st);
+      if (res.ok) ctx.toast('↩ 已撤销：' + res.summary, true);
+      else ctx.toast(res.reason || '无法撤销', false, true);
+      ctx.render();
+      return true;
+    }
+    if (act === 'lead') { res = iv.setLead(ctx.st, base, btn.getAttribute('data-idx')); }
+    else if (act === 'where') { res = iv.toggleWhere(ctx.st, base, btn.getAttribute('data-idx')); }
+    else if (act === 'pick-store') {
+      var sidx = Number(btn.getAttribute('data-sidx'));
+      swapTargetStorageIdx = (swapTargetStorageIdx === sidx || sidx < 0) ? -1 : sidx;
+      ctx.render();
+      return true;
+    }
+    else if (act === 'swap-move') {
+      res = iv.swapMove(ctx.st, base, btn.getAttribute('data-idx'), btn.getAttribute('data-aidx'), btn.getAttribute('data-sidx'));
+      if (res && res.ok) swapTargetStorageIdx = -1;
+    }
+    else if (act === 'use-bag') {
+      var target = bagTargetSel === 'tamer'
+        ? { kind: 'tamer' }
+        : { kind: 'beast', idx: Number((bagTargetSel.split(':')[1]) || 0) };
+      res = iv.useBagItem(ctx.st, base, btn.getAttribute('data-bidx'), target);
+    }
+    else if (act === 'say-bag') {
+      var nm = btn.getAttribute('data-name') || '';
+      if (nm && ctx.fillInput) ctx.fillInput('我拿出「' + nm + '」使用。');
+      ctx.toast('已填入输入框：「' + nm + '」', false);
+      return true;
+    }
+    else if (act === 'buy') {
+      shopOpen = true;
+      res = iv.buyShopItem(ctx.st, base, btn.getAttribute('data-gid'));
+    }
+    else if (act === 'done-sch') { res = iv.completeSchedule(ctx.st, base, btn.getAttribute('data-idx')); }
+    else if (act === 'add-sch') {
+      var box = ctx.box;
+      var q = function (f) { var n = box && box.querySelector('[data-sch-f="' + f + '"]'); return n ? n.value : ''; };
+      res = iv.addSchedule(ctx.st, base, { date: q('date'), time: q('time'), place: q('place'), what: q('what') });
+    }
+    else if (act === 'read-msg') { res = iv.readMessage(ctx.st, base, btn.getAttribute('data-idx')); }
+    else if (act === 'clear-msg') { res = iv.clearMessages(ctx.st, base); }
+    else if (act === 'reply-msg') {
+      var from = btn.getAttribute('data-from') || '';
+      if (ctx.fillInput) ctx.fillInput('我回复' + from + '的消息：');
+      ctx.toast('已准备回复「' + from + '」，请确认输入', false);
+      return true;
+    }
+
+    if (res) {
+      if (res.ok) ctx.toast('✓ ' + res.summary, true);
+      else ctx.toast('⚠ ' + (res.reason || '操作未能完成'), false, true);
+      ctx.render();
+      return true;
+    }
+    return false;
+  }
+
+  function handleChange(target, ctx) {
+    var iv = IV();
+    if (!iv || !target || !target.getAttribute) return false;
+    if (target.hasAttribute('data-iv-train')) {
+      var res = iv.setTraining(ctx.st, ctx.viewState(), target.getAttribute('data-iv-train'), target.value);
+      ctx.toast(res.ok ? ('✓ ' + res.summary) : ('⚠ ' + res.reason), !!res.ok, !res.ok);
+      ctx.render();
+      return true;
+    }
+    if (target.hasAttribute('data-iv-target')) {
+      bagTargetSel = target.value || 'beast:0';
+      return true;
+    }
+    if (target.hasAttribute('data-iv-diff')) {
+      var dr = iv.setDifficulty(ctx.st, ctx.viewState(), target.value);
+      ctx.toast(dr.ok ? ('✓ ' + dr.summary) : ('⚠ ' + dr.reason), !!dr.ok, !dr.ok);
+      ctx.render();
+      return true;
+    }
+    return false;
+  }
+
+  function handleInput(target, ctx) {
+    if (!target || !target.hasAttribute || !target.hasAttribute('data-iv-dexq')) return false;
+    dexQuery = target.value || '';
+    var pos = target.selectionStart;
+    ctx.render();
+    try {
+      var ni = ctx.box && ctx.box.querySelector('[data-iv-dexq]');
+      if (ni) { ni.focus(); if (pos != null) ni.setSelectionRange(pos, pos); }
+    } catch (e) {}
+    return true;
+  }
+
+  function syncShopToggle(box) {
+    try {
+      var d = box && box.querySelector('[data-iv-shop-details]');
+      if (d) shopOpen = !!d.open;
+    } catch (e) {}
+  }
+
+  function syncLockBanner(doc, st, onUnlocked, onToast) {
+    var iv = IV();
+    if (!doc || !doc.body || !iv) return;
+    var hs = iv.getHostStatus(st);
+    var cur = doc.getElementById('p12-ui-lock-banner');
+    if (!hs.locked) {
+      if (cur) cur.remove();
+      return;
+    }
+    if (cur) return;
+    var bar = doc.createElement('div');
+    bar.id = 'p12-ui-lock-banner';
+    bar.className = 'p12-ui-lock-banner';
+    bar.innerHTML = '<span>⚠ <b>《契约之城》必须开启 RP-Hub UI 模板（主模型分析）</b> 才能同步手环即时数值与状态栏。</span>' +
+      '<button type="button" class="p12-ui-lock-btn" data-p12-unlock="1">⚡ 一键自动开启 UI 模板</button>';
+    bar.addEventListener('click', function (ev) {
+      var b = ev.target && ev.target.closest ? ev.target.closest('[data-p12-unlock]') : null;
+      if (!b) return;
+      iv.enableUiTemplate(st);
+      bar.remove();
+      if (typeof onToast === 'function') onToast('✓ 已一键开启 UI 模板！手环即时结算已就绪。', false);
+      if (typeof onUnlocked === 'function') onUnlocked();
+    });
+    doc.body.appendChild(bar);
+  }
+
+  var api = {
+    renderDrawer: renderDrawer,
+    renderTeam: renderTeam,
+    renderBag: renderBag,
+    renderSch: renderSch,
+    renderMsg: renderMsg,
+    renderDex: renderDex,
+    renderSys: renderSys,
+    handleAction: handleAction,
+    handleChange: handleChange,
+    handleInput: handleInput,
+    syncShopToggle: syncShopToggle,
+    syncLockBanner: syncLockBanner
+  };
+
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  else root.P12WristbandV3 = api;
+})(typeof window !== 'undefined' ? window : this);
+
+;
 // 契约之城 · 卡内钩子（v0.7.3 · 手环照总监母版）
 // 跑在 RP-Hub 主页面里（由正则输出的 iframe 塞进来）。只在当前角色卡名字含「契约之城」时工作，
 // 换别的卡立刻卸载：恢复原 fetch、移除悬浮窗。
@@ -1189,7 +2413,7 @@ window.P12_PROSE_V7_CSS="/* ====================================================
   var LS = 'p12hook:';
   var load = function (k, d) { try { var v = localStorage.getItem(LS + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } };
   var save = function (k, v) { try { localStorage.setItem(LS + k, JSON.stringify(v)); } catch (e) {} };
-  var DEF_SPRITE_URL = 'https://42ddc630.wanxiangdengta.pages.dev/file/1795349420704_p12-sprites.json';
+  var DEF_SPRITE_URL = 'https://42ddc630.wanxiangdengta.pages.dev/file/1795408911785_p12-sprites.json';
   var savedCfg = load('cfg', {});
   // 老存档一旦开关过手环抽屉就会把旧版默认 spriteUrl 存进 localStorage；升级卡版本时自动跟进新官方清单地址（用户主动清空或填外站地址则保留）。
   if (savedCfg && typeof savedCfg.spriteUrl === 'string' && /wanxiangdengta\.pages\.dev\/file\/\d+_p12-sprites\.json$/.test(savedCfg.spriteUrl) && savedCfg.spriteUrl !== DEF_SPRITE_URL) {
@@ -1614,8 +2838,8 @@ window.P12_PROSE_V7_CSS="/* ====================================================
       .map(function (x) { return x.trim().slice(0, 80); });
   };
   var UI_ITEM = {
-    team: { nick: 't', species: 't', stage: 't', where: 't', injury: 't', bondTier: 't', training: 't',
-      hp: 'n', fatigue: 'n', bond: 'n', growth: 'n', types: 'l', moves: 'l', storage: 'l' },
+    team: { nick: 't', species: 't', stage: 't', where: 't', injury: 't', bondTier: 't', training: 't', bottleneck: 't',
+      hp: 'n', fatigue: 'n', bond: 'n', growth: 'n', level: 'n', exp: 'n', expNeed: 'n', types: 'l', moves: 'l', storage: 'l' },
     present: { name: 't', note: 't' }, others: { name: 't', note: 't' },
     favor: { who: 't', text: 't' }, bag: { name: 't', qty: 'n' },
     schedule: { raw: 't', date: 't', time: 't', place: 't', what: 't' }, messages: { from: 't', text: 't' }
@@ -1644,6 +2868,7 @@ window.P12_PROSE_V7_CSS="/* ====================================================
         });
         if (k === 'team') {
           if (o.hp != null && (o.hp < 0 || o.hp > 100)) o.hp = null;
+          if (!item.bottleneck || o.bottleneck === 'false' || o.bottleneck === '0') o.bottleneck = null;
           if (!o.nick && !o.species) return null;
         }
         if ((k === 'present' || k === 'others') && !o.name) return null;
@@ -2576,6 +3801,29 @@ window.P12_PROSE_V7_CSS="/* ====================================================
     for (var i = 0; i < names.length; i++) if (names[i] && text.indexOf(names[i]) >= 0) return true;
     return false;
   };
+  var PLACE_GO_RE = /(?:去|到|来到|走进|踏入|前往|出发去|抵达|赶往|逛|进入)[^，。！？\n]{0,6}$/;
+  var TALK_ONLY_RE = /(?:听说|聊起|提起|想起|问起|打听|说起|记得|传说|新闻里|讨论)[^，。！？\n]{0,8}$/;
+  var MEET_ACT_RE = /(?:找|见|叫|问|拉住|递给|走向|跟|和|对|约|拜访|请教)/;
+  var allowFirstMeet = function (kind, userText, scene, names) {
+    if (kind === 'place') {
+      if (scene && textHas(scene.raw || '', names)) return true;
+      for (var pi = 0; pi < names.length; pi++) {
+        var pn = names[pi], pos = pn ? String(userText || '').indexOf(pn) : -1;
+        if (pos >= 0 && PLACE_GO_RE.test(String(userText || '').slice(Math.max(0, pos - 12), pos))) return true;
+      }
+      return false;
+    }
+    var hitAny = false;
+    for (var i = 0; i < names.length; i++) {
+      var nm = names[i], idx = nm ? String(userText || '').indexOf(nm) : -1;
+      if (idx < 0) continue;
+      hitAny = true;
+      var before = String(userText || '').slice(Math.max(0, idx - 14), idx);
+      if (TALK_ONLY_RE.test(before) && !MEET_ACT_RE.test(String(userText || ''))) return false;
+      return true;
+    }
+    return hitAny;
+  };
   var doMeet = function (body, rec) {
     var msgs = body.messages || [], i, userText = '', scene = parseScene(msgs);
     for (i = msgs.length - 1; i >= 0; i--) {
@@ -2592,9 +3840,7 @@ window.P12_PROSE_V7_CSS="/* ====================================================
       var x = idx[i];
       if (have[x.entry.comment]) continue;                      // 原生已经注入了（人就在【在场】里）
       var names = [x.name].concat(briefNames(x.brief));
-      // 「用户这句话或场景行的地点」都算：到新地方那一轮，上一条回复的场景行还是旧地点，
-      // 新地点只在用户这句里出现；人物一般也是用户点名。
-      var hit = textHas(userText + '\n' + (scene ? scene.raw : ''), names);
+      var hit = allowFirstMeet(x.kind, userText, scene, names);
       if (!hit) continue;
       var t = '[' + x.entry.comment + ']\n' + x.entry.content;
       if (chars + t.length > MEET_CHARS) { rec.meetSkip = '这一轮要补的详档超过 ' + MEET_CHARS + ' 字，先补前面的'; continue; }
@@ -3082,7 +4328,7 @@ window.P12_PROSE_V7_CSS="/* ====================================================
 /* === WT-v7 冰川白钛手环 CSS 结束 === */`;
   var css = document.createElement('style');
   css.id = 'p12hook-style';
-  css.textContent = MASTER_CSS;
+  css.textContent = MASTER_CSS + (window.P12_WRISTBAND_V3_CSS ? '\n' + window.P12_WRISTBAND_V3_CSS : '');
   document.head.appendChild(css);
 
   // ---------- 手环：根节点、表盘、抽屉 ----------
@@ -3343,9 +4589,10 @@ window.P12_PROSE_V7_CSS="/* ====================================================
     var id = psIdOf(b);
     return { index: i, nick: b.nick || b.species, species: b.species || b.nick, stage: b.stage || '', types: (b.types || []).slice(), id: id, key: psKeyOf(b), token: ++PSEDIT.sequence };
   };
-  var psOpenEdit = function (i) {
+  var psOpenEdit = function (i, tab) {
     psBoot(); psSyncScope(); psEndEdit();
-    PSEDIT.tab = 'link'; PSEDIT.sess = psSession(i);
+    PSEDIT.tab = (tab === 'upload' || tab === 'gen') ? tab : 'link';
+    PSEDIT.sess = psSession(i);
     if (!PSEDIT.sess) { pvClose(); return; }
     psEditBox(true); pvEditRender();
   };
@@ -4121,15 +5368,13 @@ window.P12_PROSE_V7_CSS="/* ====================================================
     if (k === 'msg') return (s.messages || []).length;
     return 0;
   };
-  var PAGES = { team: teamHtml, sch: schHtml, bag: bagHtml, fav: favorHtml, msg: msgHtml, dex: dexHtml, sys: sysHtml };
-
-  // 抽屉总装：TAMER·LINK 顶栏 + 数字执照头卡 + 8 枚道馆六边形徽章槽 + 7 大分页
   var parseBadgeLit = function (badgesStr) {
     var s = String(badgesStr || '');
     var m = s.match(/(\d+)\s*\/\s*8/) || s.match(/(\d+)/);
     return m ? Math.max(0, Math.min(8, +m[1])) : 0;
   };
-  var drawerHtml = function () {
+  var legacyPAGES = { team: teamHtml, sch: schHtml, bag: bagHtml, fav: favorHtml, msg: msgHtml, dex: dexHtml, sys: sysHtml };
+  var legacyDrawerHtml = function () {
     var s = viewState() || {}, t = dialNow();
     var customFull = load('tamerFull:' + scope(), '');
     var avObj = s.name ? avatarOf(s.name, '', 'head') : null;
@@ -4167,10 +5412,64 @@ window.P12_PROSE_V7_CSS="/* ====================================================
       }).join('') + '</div>' +
       '<div class="p12-body">';
     TABS.forEach(function (x) {
-      h += '<div class="p12-page' + (tab === x[0] ? ' on' : '') + '" data-p="' + x[0] + '">' + PAGES[x[0]]() + '</div>';
+      h += '<div class="p12-page' + (tab === x[0] ? ' on' : '') + '" data-p="' + x[0] + '">' + legacyPAGES[x[0]]() + '</div>';
     });
     h += '</div>';
     return h;
+  };
+  var v3ToastTimer = null;
+  var v3Toast = function (msg, canUndo, isErr) {
+    try {
+      var prev = document.getElementById('p12-toast');
+      if (prev) prev.remove();
+      clearTimeout(v3ToastTimer);
+      var t = document.createElement('div');
+      t.id = 'p12-toast';
+      t.className = 'p12-toast' + (isErr ? ' err' : '');
+      t.innerHTML = '<span>' + esc(msg || '') + '</span>' +
+        (canUndo ? '<button type="button" data-toast-undo="1">↩ 撤销</button>' : '');
+      t.addEventListener('click', function (ev) {
+        var ub = ev.target && ev.target.closest ? ev.target.closest('[data-toast-undo]') : null;
+        if (!ub || !window.P12InstantVars) return;
+        var ur = window.P12InstantVars.undoLast(st);
+        t.remove();
+        if (ur && ur.ok) { v3Toast('↩ 已撤销：' + ur.summary, false, false); render(); }
+      });
+      document.body.appendChild(t);
+      v3ToastTimer = setTimeout(function () { try { t.remove(); } catch (e) {} }, 4200);
+    } catch (e) {}
+  };
+  var v3Ctx = function () {
+    return {
+      doc: document, box: box, st: st, VER: VER, TABS: TABS, PAGES: PAGES,
+      hasParser: !!PARSER, viewState: viewState, dialNow: dialNow, tabNum: tabNum,
+      getTab: function () { return tab; },
+      getSelBeast: function () { return selBeast; }, setSelBeast: function (i) { selBeast = i; },
+      load: load, scope: scope, scopeK: scopeK, sprOkStr: function (u) { return typeof sprOkStr === 'function' && sprOkStr(u); },
+      parseBadgeLit: parseBadgeLit, avatarOf: avatarOf, avHtml: avHtml,
+      creatureChain: creatureChain, creatureAttrs: creatureAttrs, hudTypeIcon: hudTypeIcon,
+      parseMoveInfo: parseMoveInfo, moveLabel: moveLabel, tyC: tyC, segs12: segs12, clampPct: clampPct,
+      stageCap: stageCap, batFlipOf: batFlipOf, presentHtml: presentHtml, pickRadarArt: pickRadarArt,
+      bagDotColor: bagDotColor, calGrid: calGrid, sceneDate: sceneDate, favors: favors, empty: empty,
+      esc: esc, fillInput: function (txt) { if (typeof fillInput === 'function') fillInput(txt); },
+      render: function () { render(); }, toast: v3Toast,
+      legacySysRestHtml: function () {
+        var raw = legacyPAGES.sys();
+        return raw.replace(/^<div class="v7-sec-hd">[\s\S]*?<\/div>/, '');
+      }
+    };
+  };
+  var PAGES = {
+    team: function () { return window.P12WristbandV3 ? window.P12WristbandV3.renderTeam(v3Ctx()) : legacyPAGES.team(); },
+    sch: function () { return window.P12WristbandV3 ? window.P12WristbandV3.renderSch(v3Ctx()) : legacyPAGES.sch(); },
+    bag: function () { return window.P12WristbandV3 ? window.P12WristbandV3.renderBag(v3Ctx()) : legacyPAGES.bag(); },
+    fav: favorHtml,
+    msg: function () { return window.P12WristbandV3 ? window.P12WristbandV3.renderMsg(v3Ctx()) : legacyPAGES.msg(); },
+    dex: function () { return window.P12WristbandV3 ? window.P12WristbandV3.renderDex(v3Ctx()) : legacyPAGES.dex(); },
+    sys: function () { return window.P12WristbandV3 ? window.P12WristbandV3.renderSys(v3Ctx()) : legacyPAGES.sys(); }
+  };
+  var drawerHtml = function () {
+    return window.P12WristbandV3 ? window.P12WristbandV3.renderDrawer(v3Ctx()) : legacyDrawerHtml();
   };
   // ---------- 2d 正文对白头像：判定交给 hook/dialog-speaker.js，这里只负责取段落、插节点 ----------
   // 三条硬约束：只加节点不改正文；已挂过的段（文字没变）不重复挂；流式生成中不挂。
@@ -4383,14 +5682,14 @@ window.P12_PROSE_V7_CSS="/* ====================================================
   var CB = 'margin:14px 0;border:2.5px solid #1b2340;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%);background:#ffffff;color:#1b2340;padding:0;font:700 13.5px/1.65 "HarmonyOS Sans SC","Source Han Sans SC","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;box-shadow:6px 6px 0 rgba(27,35,64,.14);overflow:hidden';
   var CBRAW = 'margin:6px 0 0;white-space:pre-wrap;word-break:break-all;background:#f1f6fd;border:1px solid #cfe0f5;padding:6px 8px;font:11px/1.5 ui-monospace,monospace;color:#52607a';
   var fmtTypes = function (t) { return Array.isArray(t) ? t.join(' · ') : String(t || ''); };
-  // 卡片里的小立绘：按物种取图，取不到用全息圆环＋首字兜底
-  var blkArt = function (species, size, label, types) {
+  // 卡片里的小立绘：按物种（或指定归属个体）取图，取不到用全息圆环＋首字兜底
+  var blkArt = function (species, size, label, types, owned) {
     var sp = String(species || '').split(/[·・]/)[0].trim();
-    var chain = creatureChain(sp, types), u = chain.length ? chain[0].url : null;
+    var chain = creatureChain(sp, types, owned), u = chain.length ? chain[0].url : null;
     var bgRule = u ? ('background-color:#f0f9ff;background-image:url(\'' + esc(u) + '\');') : 'background:linear-gradient(135deg,#e0f2fe,#bae6fd);';
     var base = 'width:' + size + 'px;height:' + size + 'px;border:2px solid #1b2340;' + bgRule +
       'background-size:contain;background-repeat:no-repeat;background-position:center;display:flex;align-items:center;justify-content:center;font:900 ' + Math.round(size / 2.6) + 'px/1 sans-serif;color:#1b2340;flex:none';
-    return '<div' + creatureAttrs(sp, types) + ' title="' + esc(sp) + '" style="' + base + '">' + (u ? '' : esc(label || sp.slice(0, 1) || '?')) + '</div>';
+    return '<div' + creatureAttrs(sp, types, owned) + ' title="' + esc(sp) + '" style="' + base + '">' + (u ? '' : esc(label || sp.slice(0, 1) || '?')) + '</div>';
   };
   var SAY = {
      交流: '先和它交流看看。',
@@ -4429,14 +5728,27 @@ window.P12_PROSE_V7_CSS="/* ====================================================
       if (o['眼前情况']) bodyRows.push('<div style="color:#1e293b;font-size:13px">' + esc(o['眼前情况']) + '</div>');
     } else if (kind === '进化') {
       topBar = '<div style="background:linear-gradient(90deg,#1b2340,#ff6b2b);color:#fff;padding:8px 14px;display:flex;align-items:center;justify-content:space-between"><span>★ EVOLUTION // 进化 · ' + esc(o['异兽'] || '') + '</span><span style="font-size:11px;color:#fde68a">破茧蜕变</span></div>';
+      var evoNick = String(o['异兽'] || '').trim();
       var fromSp = String(o['从'] || '').split(/[·・]/)[0].trim();
       var toSp = String(o['到'] || '').split(/[·・]/)[0].trim();
+      var team = (viewState() && viewState().team) || [];
+      var matched = null;
+      for (var mi = 0; mi < team.length; mi++) {
+        var mb = team[mi];
+        if ((evoNick && mb.nick === evoNick) || (toSp && mb.species === toSp) || (fromSp && mb.species === fromSp)) { matched = mb; break; }
+      }
+      var evoTypes = o['属性'] || (matched && matched.types && matched.types.length ? matched.types : (creatureTypes(toSp).length ? creatureTypes(toSp) : creatureTypes(fromSp)));
+      var fromOwned = evoNick ? { nick: evoNick, species: fromSp } : null;
+      var toOwned = evoNick ? { nick: evoNick, species: toSp } : null;
       bodyRows.push('<div style="display:flex;align-items:center;justify-content:space-around;gap:12px;margin:8px 0;padding:10px;background:linear-gradient(105deg,#f4f9ff,#fff7ed);border:1.5px solid #cfe0f5">' +
-        '<div style="display:flex;flex-direction:column;align-items:center;gap:4px">' + blkArt(fromSp, 92) + '<span style="font-size:12px;font-weight:800">' + esc(fromSp || '旧形态') + '</span></div>' +
+        '<div style="display:flex;flex-direction:column;align-items:center;gap:4px">' + blkArt(fromSp, 92, null, evoTypes, fromOwned) + '<span style="font-size:12px;font-weight:800">' + esc(fromSp || '旧形态') + '</span></div>' +
         '<div style="display:flex;flex-direction:column;align-items:center;gap:4px"><span style="background:#ff6b2b;color:#fff;padding:3px 10px;font-size:12px;font-weight:900;transform:skewX(-12deg)">EVOLVE →</span><span style="font-size:11.5px;color:#52607a">' + esc(o['从'] || '') + ' → ' + esc(o['到'] || '') + '</span></div>' +
-        '<div style="display:flex;flex-direction:column;align-items:center;gap:4px">' + blkArt(toSp, 104) + '<span style="font-size:13px;font-weight:900;color:#ff6b2b">' + esc(toSp || '新形态') + '</span></div>' +
+        '<div style="display:flex;flex-direction:column;align-items:center;gap:4px">' + blkArt(toSp, 104, null, evoTypes, toOwned) + '<span style="font-size:13px;font-weight:900;color:#ff6b2b">' + esc(toSp || '新形态') + '</span></div>' +
       '</div>');
       bodyRows.push('<div style="font-size:12px;color:#52607a">' + ['岔路：' + esc(o['岔路'] || '—'), o['Lv'] == null ? null : 'Lv ' + esc(o['Lv']), o['成长'] == null ? null : '成长 ' + esc(o['成长'])].filter(Boolean).join(' ｜ ') + '</div>');
+      if (toSp && !sprGet(toSp) && !(toOwned && PSS.over[psKeyOf(toOwned)])) {
+        bodyRows.push('<div style="margin-top:8px"><button type="button" data-p12evo-edit="' + esc(evoNick || toSp) + '" data-p12evo-sp="' + esc(toSp) + '" style="border:2px solid #ff6b2b;background:#fff3e6;color:#ff6b2b;clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);padding:5px 12px;font:900 12px/1.3 inherit;cursor:pointer">✦ 为新形态「' + esc(toSp) + '」生成或设置立绘</button></div>');
+      }
     } else if (kind === '结契') {
       topBar = '<div style="background:#1b2340;border-bottom:2px solid #10b981;color:#fff;padding:8px 14px">✦ CONTRACT // 结契 · ' + esc(o['异兽'] || '') + '</div>';
       bodyRows.push('<div style="display:flex;align-items:center;gap:12px;margin:4px 0">' + blkArt(o['物种'], 88, null, o['属性']) +
@@ -4538,6 +5850,24 @@ window.P12_PROSE_V7_CSS="/* ====================================================
   H.blockSay = { fill: fillInput };
   try {
     document.addEventListener('click', function (ev) {
+      var evoEd = ev.target && ev.target.closest && ev.target.closest('[data-p12evo-edit]');
+      if (evoEd) {
+        var eNick = evoEd.getAttribute('data-p12evo-edit') || '';
+        var eSp = evoEd.getAttribute('data-p12evo-sp') || '';
+        var team = (viewState() && viewState().team) || [];
+        var idx = -1;
+        for (var i = 0; i < team.length; i++) {
+          var b = team[i];
+          if ((eNick && b.nick === eNick) || (eSp && b.species === eSp)) { idx = i; break; }
+        }
+        if (idx >= 0) {
+          if (!cfg.open || tab !== 'team') { cfg.open = true; tab = 'team'; save('cfg', cfg); render(); }
+          psOpenEdit(idx, 'gen');
+        } else if (!cfg.open) {
+          cfg.open = true; tab = 'team'; save('cfg', cfg); render();
+        }
+        return;
+      }
       var t = ev.target && ev.target.closest && ev.target.closest('[data-p12say]');
       if (!t) return;
       fillInput(t.getAttribute('data-p12say'));
@@ -4670,6 +6000,7 @@ window.P12_PROSE_V7_CSS="/* ====================================================
     clsT(dial, 'p12-off', !cfg.on);
     paintDial();
     if (cfg.open) {
+      if (window.P12WristbandV3) window.P12WristbandV3.syncShopToggle(box);
       var body = q1(box, '.p12-body'), keep = body ? body.scrollTop : 0;
       var diag = q1(box, '.p12-diag'), diagOpen = !!(diag && diag.open);
       box.innerHTML = drawerHtml();
@@ -4699,7 +6030,17 @@ window.P12_PROSE_V7_CSS="/* ====================================================
   };
   H.injCount = injCount;
   H.badge = function () { return cfg.on ? injCount(H.log[0]) : 0; };
-  H.pages = { team: teamHtml, sch: schHtml, bag: bagHtml, fav: favorHtml, msg: msgHtml, dex: dexHtml, sys: sysHtml, diag: diagHtml, tabs: TABS };
+  H.pages = {
+    team: function () { return PAGES.team(); },
+    sch: function () { return PAGES.sch(); },
+    bag: function () { return PAGES.bag(); },
+    fav: function () { return PAGES.fav(); },
+    msg: function () { return PAGES.msg(); },
+    dex: function () { return PAGES.dex(); },
+    sys: function () { return PAGES.sys(); },
+    diag: diagHtml,
+    tabs: TABS
+  };
   H.drawer = function () { return drawerHtml(); };
   H.setTab = function (k) { tab = k; };
   H.paintDial = paintDial;
@@ -4744,6 +6085,8 @@ window.P12_PROSE_V7_CSS="/* ====================================================
   onE(dial, 'pointercancel', endDrag);
   onE(box, 'click', function (ev) {
     var pick = function (attr) { return ev.target.closest ? ev.target.closest('[' + attr + ']') : null; };
+    var ivEl = pick('data-iv');
+    if (ivEl && window.P12WristbandV3 && window.P12WristbandV3.handleAction(ivEl, v3Ctx())) return;
     var kel = pick('data-k');
     var k = kel ? kel.getAttribute('data-k') : (ev.target.getAttribute && ev.target.getAttribute('data-k'));
     if (k === 'close') { cfg.open = false; save('cfg', cfg); render(); return; }
@@ -4822,6 +6165,7 @@ window.P12_PROSE_V7_CSS="/* ====================================================
     }
   });
   onE(box, 'input', function (ev) {
+    if (window.P12WristbandV3 && window.P12WristbandV3.handleInput(ev.target, v3Ctx())) return;
     var tag = ev.target && ev.target.tagName;
     var psk2 = ev.target && ev.target.getAttribute && ev.target.getAttribute('data-pset');
     if (!psk2 || tag !== 'TEXTAREA' || !PS || !psvc) return;
@@ -4830,6 +6174,7 @@ window.P12_PROSE_V7_CSS="/* ====================================================
     psSaveCfg(nx2, false);
   });
   onE(box, 'change', function (ev) {
+    if (window.P12WristbandV3 && window.P12WristbandV3.handleChange(ev.target, v3Ctx())) return;
     if (ev.target && ev.target.getAttribute && ev.target.hasAttribute && ev.target.hasAttribute('data-pfile')) {
       psUpload(ev.target.files && ev.target.files[0]);
       return;
@@ -4979,6 +6324,12 @@ window.P12_PROSE_V7_CSS="/* ====================================================
   };
   var batOnSend = function (rep) {
     if (!rep || !window.P12BattleParse) return;
+    if (window.P12InstantVars) {
+      try {
+        var bSync = window.P12InstantVars.syncBattleResult(st, viewState(), rep);
+        if (bSync && bSync.ok) v3Toast('✓ ' + bSync.summary, true);
+      } catch (e) {}
+    }
     var text = window.P12BattleParse.toReport(rep);
     try { st.userInput = text; } catch (e) {}
     try {
@@ -5067,7 +6418,15 @@ window.P12_PROSE_V7_CSS="/* ====================================================
         window.P12WildView.mountWild(host, spec, {
           team: team,
           saveKey: LS + key,
-          onFinish: function (capsule) { if (typeof fillInput === 'function') fillInput(capsule); }
+          onFinish: function (capsule, payload) {
+            if (window.P12InstantVars && payload) {
+              try {
+                var wSync = window.P12InstantVars.syncWildResult(st, viewState(), payload);
+                if (wSync && wSync.ok) v3Toast('✓ ' + wSync.summary, true);
+              } catch (e) {}
+            }
+            if (typeof fillInput === 'function') fillInput(capsule);
+          }
         });
       } catch (e) { H.wildErr = String(e && e.message || e); }
     }
@@ -5108,6 +6467,7 @@ window.P12_PROSE_V7_CSS="/* ====================================================
     try { psRefresh(); } catch (e) { PSS.err = String(e && e.message || e); }
     try { H.battleFold.paint(); } catch (e) { BATFOLD.err = String(e && e.message || e); }
     try { wildPaint(); } catch (e) { H.wildErr = String(e && e.message || e); }
+    if (window.P12WristbandV3) { try { window.P12WristbandV3.syncLockBanner(document, st, render, v3Toast); } catch (e) {} }
     paintDial();
     if (cfg.open && uiDirty) { uiDirty = false; render(); }
     if (cfg.open && rec && rec !== before) render();
@@ -5122,9 +6482,12 @@ window.P12_PROSE_V7_CSS="/* ====================================================
     try { document.removeEventListener('pointerdown', outside, true); } catch (e) {}
     try { window.removeEventListener('p12-ui-state', uiEvent); window.removeEventListener('message', uiEvent); } catch (e) {}
     clearTimeout(flashTimer);
+    clearTimeout(v3ToastTimer);
     try { var bv = document.getElementById('p12battle'); if (bv) bv.remove(); } catch (e) {}
     try { var be = document.getElementById('p12-battle-entry'); if (be) be.remove(); } catch (e) {}
     try { var pv7 = document.getElementById('p12-prose-v7-css'); if (pv7) pv7.remove(); } catch (e) {}
+    try { var lb = document.getElementById('p12-ui-lock-banner'); if (lb) lb.remove(); } catch (e) {}
+    try { var ts = document.getElementById('p12-toast'); if (ts) ts.remove(); } catch (e) {}
     el.remove(); css.remove();
     H.stoppedBy = why;
     delete window.__p12hook;
@@ -5133,6 +6496,7 @@ window.P12_PROSE_V7_CSS="/* ====================================================
   try { batLoad(); batReady(); } catch (e) { H.battleErr = String(e && e.message || e); }
   try { sprBoot(); } catch (e) { SPR.err = String(e && e.message || e); }
   try { ingest(); } catch (e) { H.ingestErr = String(e && e.message || e); }
+  if (window.P12WristbandV3) { try { window.P12WristbandV3.syncLockBanner(document, st, render, v3Toast); } catch (e) {} }
   render();
   try { dialPaint(); } catch (e) { DLG.err = String(e && e.message || e); }
   try { dexArt(); } catch (e) { DEXART.err = String(e && e.message || e); }
