@@ -197,7 +197,7 @@ window.P12_WRISTBAND_V3_CSS="/* === WT-v7 / OS v3.0 云端手环即时变量与�
   var HUES=[0,30,55,140,185,215,265,320];
   function clean(v){return typeof v==='string'?v.trim().normalize('NFC'):'';}
   function nameHue(name){var s=clean(name),h=0x811c9dc5;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=(h+((h<<1)+(h<<4)+(h<<7)+(h<<8)+(h<<24)))>>>0;}return HUES[h%8];}
-  var OLD=/老人|老头|老汉|老者|老翁|老叟|老伯|大爷|爷爷|阿公|外公|老太|奶奶|老妪|婆婆|阿婆|外婆|老师傅|老先生|老前辈|老道长|老船长|老猎人|老管家|年迈|花甲|古稀|白发苍苍|满头白发|退休|拄拐/;
+  var OLD=/老年|长者|高龄|老人|老头|老汉|老者|老翁|老叟|老伯|大爷|爷爷|阿公|外公|老太|奶奶|老妪|婆婆|阿婆|外婆|老师傅|老先生|老前辈|老道长|老船长|老猎人|老管家|年迈|花甲|古稀|白发苍苍|满头白发|退休|拄拐/;
   var MID=/中年|大叔|叔叔|大伯|伯父|叔父|阿姨|大妈|大婶|婶子|大娘|大姐|大哥|老哥|老姐|三十多|四十来|四十多|五十多|五十来|留胡子|胡子拉碴/;
   var YOUNG=/青年|年轻|小伙|少男|少女|少年|姑娘|小姐姐|小哥哥|小哥|小妹|小弟|学姐|学长|学妹|学弟|高中|大学|研究生|体校生|见习生|学生|实习生|学徒|二十出头|二十来|十七八|十八|十九|刚毕业|青春/;
   var CHILD=/小孩|小朋友|小孩子|儿童|幼童|幼儿|男童|女童|小学生|初中生|国中生|男孩|女孩|小娃娃|奶娃|背书包的孩子|十岁左右|八九岁|七八岁/;
@@ -3177,13 +3177,103 @@ window.P12_WRISTBAND_V3_CSS="/* === WT-v7 / OS v3.0 云端手环即时变量与�
   var PA = function () { return (window.P12PersonAvatar || null); };
   var DS = function () { return (window.P12DialogSpeaker || null); };
   var headOf = function (n) { var s = sprName(n); return s ? s.slice(0, 1) : ''; };
+  var PM = { sig: '', map: {} };
+  var parsePersonMetaSnippet = function (text) {
+    var head = String(text || '').slice(0, 280);
+    var g = head.match(/性别[：:]\s*([男女])/);
+    var a = head.match(/年龄[：:]\s*([^\r\n。；｜|]{1,22})/);
+    var ageStr = '';
+    if (a) {
+      var rawA = String(a[1] || '').trim();
+      var numM = rawA.match(/(\d{1,3}|[一二两三四五六七八九十]{1,3})\s*(?:周?岁)?/);
+      var kwM = rawA.match(/(儿童|少年|少女|青年|中年|老年|老人)/);
+      if (numM && /^\d+$/.test(numM[1])) ageStr = numM[1] + '岁';
+      else if (kwM) ageStr = kwM[1];
+      else if (numM) ageStr = numM[1] + '岁';
+    }
+    var out = [];
+    if (g) out.push(g[1]);
+    if (ageStr) out.push(ageStr);
+    return out.join('、');
+  };
+  var rebuildPersonMeta = function () {
+    var wi = (st && Array.isArray(st.worldInfo)) ? st.worldInfo : [];
+    var ch = (st && Array.isArray(st.chatHistory)) ? st.chatHistory : [];
+    var lastCh = ch.length ? ch[ch.length - 1] : null;
+    var sig = wi.length + '|' + ch.length + '|' + (lastCh ? String(lastCh.content || '').length : 0) + '|' + ((wi[0] && wi[0].comment) || '');
+    if (sig === PM.sig) return PM.map;
+    var map = {};
+    var put = function (nm, meta) {
+      var k = sprName(nm);
+      if (!k || !meta) return;
+      if (!map[k] || (/[男女]/.test(meta) && !/[男女]/.test(map[k]))) map[k] = meta;
+    };
+    for (var i = 0; i < wi.length; i++) {
+      var e = wi[i];
+      if (!e || e.enabled === false || !e.content) continue;
+      var od = Number(e.order) || 0;
+      if (od < 4000000 || od >= 4700000) continue;
+      var cname = String(e.comment || '').replace(/^简·/, '').trim();
+      if (!cname) continue;
+      var meta = parsePersonMetaSnippet(e.content);
+      if (!meta) continue;
+      put(cname, meta);
+      var al = String(e.content).slice(0, 260).match(/常用名[：:]\s*([^\r\n。；]+)/);
+      if (al) {
+        al[1].split(/[、，,]/).forEach(function (alias) { put(alias.trim(), meta); });
+      }
+    }
+    for (var ci = 0; ci < ch.length; ci++) {
+      var m = ch[ci];
+      if (!m || typeof m.content !== 'string') continue;
+      if (m.role === 'user' && m.content.indexOf('[姓名]') >= 0) {
+        var nmM = m.content.match(/\[姓名\]\s*([^\r\n]+)/);
+        var sxM = m.content.match(/\[性别\]\s*([男女])/);
+        var agM = m.content.match(/\[年龄\]\s*([^\r\n]{1,16})/);
+        if (nmM) {
+          var regNm = nmM[1].trim();
+          var rParts = [];
+          if (sxM) rParts.push(sxM[1]);
+          if (agM) {
+            var ag = agM[1].trim();
+            if (/^\d{1,3}$/.test(ag)) rParts.push(ag + '岁');
+            else if (ag && ag !== '未填写') rParts.push(ag);
+          }
+          if (rParts.length) put(regNm, rParts.join('、'));
+        }
+      }
+    }
+    for (var ri = Math.max(0, ch.length - 4); ri < ch.length; ri++) {
+      var rm = ch[ri];
+      if (!rm || rm.role !== 'assistant' || typeof rm.content !== 'string') continue;
+      var rBlk = rm.content.match(/<roster>([\s\S]*?)<\/roster>/i);
+      if (!rBlk) continue;
+      rBlk[1].split(/\r?\n/).forEach(function (line) {
+        var cols = line.split(/[｜|]/);
+        if (cols.length < 2) return;
+        var rName = cols[0].trim();
+        var bodyDesc = cols.slice(1).join('｜').replace(/｜?对你的称呼[\s\S]*$/, '').trim();
+        if (rName && bodyDesc) put(rName, bodyDesc);
+      });
+    }
+    PM = { sig: sig, map: map };
+    return map;
+  };
+  var personMeta = function (name) {
+    var k = sprName(name);
+    if (!k) return '';
+    var map = rebuildPersonMeta();
+    return map[k] || '';
+  };
   var avatarOf = function (name, note, kind) {
     var kd = kind === 'full' ? 'full' : 'head';
     var hue = sprHue(name);
     var m = PA();
+    var meta = personMeta(name);
+    var mergedNote = [note != null ? String(note).trim() : '', meta].filter(Boolean).join('｜');
     if (m && typeof m.selectAvatar === 'function') {
       try {
-        var r = m.selectAvatar(sprName(name), note == null ? '' : String(note),
+        var r = m.selectAvatar(sprName(name), mergedNote,
           { kind: kd, personGet: personGet, genericGet: genericGet, hue: sprHue });
         if (r && typeof r === 'object') {
           if (r.hue == null) r.hue = hue;
